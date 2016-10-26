@@ -6,6 +6,10 @@ Public Class GlobalVariables
     Public Shared glbRepYrDisp As Boolean
     Public Shared glbRepWSDisp As Boolean
     Public Shared glbErrMsg As String
+    Public Shared glbConn As New ADODB.Connection
+    Public Shared glbErrMesg As String
+    Public Shared glbLocNme As String
+    Public Shared glbLocID As Integer
     'Public Shared oAccess As ApplicationServices
 
 End Class
