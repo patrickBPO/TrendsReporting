@@ -67,7 +67,7 @@ Partial Class frmMain
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(100, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'TrendReportsToolStripMenuItem
