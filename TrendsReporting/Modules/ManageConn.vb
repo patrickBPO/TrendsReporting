@@ -1,4 +1,4 @@
-﻿Imports MoveTrackerWinApp.GlobalVar
+﻿Imports TrendsReporting.GlobalVariables
 Imports ADODB
 '* --Note...to manually create ODBC datasources you have to create Registry Values in:
 '   \HKEY_CURRENT_USER\Software\ODBC\ODBC.INI\ODBC Data Sources

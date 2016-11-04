@@ -1,7 +1,7 @@
 ﻿Imports TrendsReporting.CRPath
 Imports TrendsReporting.GlobalVariables
-Imports TrendsReporting.ErrorMesg
 Imports Microsoft.Office.Interop
+Imports System.ComponentModel
 
 '--64Bit ODBC Trial
 Public Class frmMain
@@ -55,9 +55,17 @@ Public Class frmMain
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim setCrPth As New CRPath
+        Dim verifLog As New VerifyLogin
+
         If Not setCrPth.CreateRegEnvPath() Then
-            glbErrMsg = ErrorMesg.ErrorMes(1, "F")
+            glbErrMsg = ErrorMes(1, "F")
             MsgBox(glbErrMsg, vbCritical, "Key Creation Fail")
+        End If
+
+        If Not verifLog.IsReportAdmin(glbUname, glbPwd) Then
+            TrendReportsToolStripMenuItem.Visible = False
+        Else
+            TrendReportsToolStripMenuItem.Visible = True
         End If
     End Sub
 
@@ -84,4 +92,12 @@ Public Class frmMain
             frmTrends.Show()
         End If
     End Sub
+
+    Private Sub frmMain_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        Dim fmLgin As New frmLogin
+        glbConn.Close()
+        fmLgin.Show()
+
+    End Sub
+
 End Class

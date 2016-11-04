@@ -27,6 +27,22 @@ Public Class frmTrends
         End If
     End Sub
 
+    Private Sub EnterPressed(ByVal sender As Object, ByVal e As KeyEventArgs)
+        Dim verifLog As New VerifyLogin
+        Dim kyResult As Integer
+        Dim kyPress As New CtrlHotKeys
+
+        If (e.KeyCode = Keys.Enter) Then
+            btnRun.PerformClick()
+        Else
+            kyResult = kyPress.KeyPressd(e)
+            If kyResult = 3 Then
+                btnRun.PerformClick()
+
+            End If
+        End If
+    End Sub
+
     Private Sub PrepareParams()
         Dim CrxReport As New CrystalDecisions.CrystalReports.Engine.ReportDocument
         Dim strReportName As String
@@ -185,6 +201,25 @@ Public Class frmTrends
             dtpEdate.Visible = True
         End If
 
+
+    End Sub
+
+    Private Sub txtSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles txtSearch.KeyDown
+        Call EnterPressed(sender, e)
+    End Sub
+
+    Private Sub dtpBdate_KeyDown(sender As Object, e As KeyEventArgs) Handles dtpBdate.KeyDown
+        Call EnterPressed(sender, e)
+
+    End Sub
+
+    Private Sub dtpEdate_KeyDown(sender As Object, e As KeyEventArgs) Handles dtpEdate.KeyDown
+        Call EnterPressed(sender, e)
+
+    End Sub
+
+    Private Sub cboYear_KeyDown(sender As Object, e As KeyEventArgs) Handles cboYear.KeyDown
+        Call EnterPressed(sender, e)
 
     End Sub
 

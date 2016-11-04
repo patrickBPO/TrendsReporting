@@ -10,6 +10,8 @@ Public Class GlobalVariables
     Public Shared glbErrMesg As String
     Public Shared glbLocNme As String
     Public Shared glbLocID As Integer
+    Public Shared glbUname As String
+    Public Shared glbPwd As String
     'Public Shared oAccess As ApplicationServices
 
 End Class
