@@ -34,10 +34,10 @@ Partial Class frmTrends
         Me.btnRun = New System.Windows.Forms.Button()
         Me.dtpBdate = New System.Windows.Forms.DateTimePicker()
         Me.cboReport = New System.Windows.Forms.ComboBox()
-        Me.CRV = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.IncidentTableAdapter = New TrendsReporting.DataSet1TableAdapters.incidentTableAdapter()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.CRV = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.lblSearch = New System.Windows.Forms.Label()
         Me.lblYear = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -109,14 +109,6 @@ Partial Class frmTrends
         Me.cboReport.Name = "cboReport"
         Me.cboReport.ValueMember = "u_module_name"
         '
-        'CRV
-        '
-        Me.CRV.ActiveViewIndex = -1
-        resources.ApplyResources(Me.CRV, "CRV")
-        Me.CRV.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.CRV.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CRV.Name = "CRV"
-        '
         'txtSearch
         '
         Me.txtSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
@@ -131,6 +123,7 @@ Partial Class frmTrends
         'Panel1
         '
         Me.Panel1.BackgroundImage = Global.TrendsReporting.My.Resources.Resources.gridFeedbk
+        Me.Panel1.Controls.Add(Me.CRV)
         Me.Panel1.Controls.Add(Me.lblSearch)
         Me.Panel1.Controls.Add(Me.lblYear)
         Me.Panel1.Controls.Add(Me.dtpBdate)
@@ -139,6 +132,14 @@ Partial Class frmTrends
         Me.Panel1.Controls.Add(Me.cboYear)
         resources.ApplyResources(Me.Panel1, "Panel1")
         Me.Panel1.Name = "Panel1"
+        '
+        'CRV
+        '
+        Me.CRV.ActiveViewIndex = -1
+        resources.ApplyResources(Me.CRV, "CRV")
+        Me.CRV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.CRV.Cursor = System.Windows.Forms.Cursors.Default
+        Me.CRV.Name = "CRV"
         '
         'lblSearch
         '
@@ -158,7 +159,6 @@ Partial Class frmTrends
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.PictureBox2)
-        Me.Controls.Add(Me.CRV)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.cboReport)
         Me.Controls.Add(Me.Panel1)
@@ -182,7 +182,6 @@ Partial Class frmTrends
     Friend WithEvents btnRun As Button
     Friend WithEvents dtpBdate As DateTimePicker
     Friend WithEvents cboReport As ComboBox
-    Friend WithEvents CRV As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents txtSearch As TextBox
     Friend WithEvents DataSet1BindingSource As BindingSource
     Friend WithEvents DataSet1 As DataSet1
@@ -191,4 +190,5 @@ Partial Class frmTrends
     Friend WithEvents Panel1 As Panel
     Friend WithEvents lblYear As Label
     Friend WithEvents lblSearch As Label
+    Friend WithEvents CRV As CrystalDecisions.Windows.Forms.CrystalReportViewer
 End Class

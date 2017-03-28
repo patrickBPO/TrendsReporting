@@ -1,0 +1,2113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbkolbeModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="age">
+          <Key>
+            <PropertyRef Name="age_id" />
+          </Key>
+          <Property Name="age_id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="a_age" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="a_range" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnetroles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnetuserclaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="longtext" />
+          <Property Name="ClaimValue" Type="longtext" />
+        </EntityType>
+        <EntityType Name="aspnetuserlogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnetuserroles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnetusers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bool" Nullable="false" />
+          <Property Name="PasswordHash" Type="longtext" />
+          <Property Name="SecurityStamp" Type="longtext" />
+          <Property Name="PhoneNumber" Type="longtext" />
+          <Property Name="PhoneNumberConfirmed" Type="bool" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bool" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" Precision="0" />
+          <Property Name="LockoutEnabled" Type="bool" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="civilian">
+          <Key>
+            <PropertyRef Name="civilian_id" />
+          </Key>
+          <Property Name="civilian_id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="f_name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="m_name" Type="varchar" MaxLength="45" />
+          <Property Name="l_name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="age" Type="uint" />
+          <Property Name="sex" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="p_location_id" Type="uint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="confiscation_type">
+          <Key>
+            <PropertyRef Name="confiscation_type_id" />
+          </Key>
+          <Property Name="confiscation_type_id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cnf_name" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contraband">
+          <Key>
+            <PropertyRef Name="contraband_id" />
+          </Key>
+          <Property Name="contraband_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contraband_desc" Type="varchar" MaxLength="45" />
+          <Property Name="contraband_type_id" Type="uint" />
+          <Property Name="confiscation_type_id" Type="uint" />
+        </EntityType>
+        <EntityType Name="contraband_type">
+          <Key>
+            <PropertyRef Name="contraband_type_id" />
+          </Key>
+          <Property Name="contraband_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ct_name" Type="text" />
+        </EntityType>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="country_id" />
+          </Key>
+          <Property Name="country_id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_name" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dest_type">
+          <Key>
+            <PropertyRef Name="dest_type_id" />
+          </Key>
+          <Property Name="dest_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="d_code" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="d_description" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="excess_force">
+          <Key>
+            <PropertyRef Name="excess_force_id" />
+          </Key>
+          <Property Name="excess_force_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="incident_id" Type="int" />
+          <Property Name="inmates_connected" Type="varchar" MaxLength="300" />
+          <Property Name="ru_pro_slf_chk" Type="bool" />
+          <Property Name="ru_pro_oth_e_chk" Type="bool" />
+          <Property Name="ru_prv_esc_chk" Type="bool" />
+          <Property Name="ru_sb_inm_nc_chk" Type="bool" />
+          <Property Name="ru_sb_vio_in_chk" Type="bool" />
+          <Property Name="ru_sb_vio_e_chk" Type="bool" />
+          <Property Name="ru_sb_dis_chk" Type="bool" />
+          <Property Name="ru_sb_thr_chk" Type="bool" />
+          <Property Name="t_frc_phy_chk" Type="bool" />
+          <Property Name="t_frc_bat_chk" Type="bool" />
+          <Property Name="t_frc_spr_chk" Type="bool" />
+          <Property Name="t_frc_fa_chk" Type="bool" />
+          <Property Name="t_frc_oth_chk" Type="bool" />
+          <Property Name="t_frc_oth_com" Type="varchar" MaxLength="45" />
+          <Property Name="injury" Type="varchar" MaxLength="45" />
+          <Property Name="m_treatment" Type="varchar" MaxLength="45" />
+          <Property Name="m_assess_yn" Type="bool" />
+          <Property Name="m_adminst_yn" Type="bool" />
+          <Property Name="m_administered" Type="varchar" MaxLength="45" />
+          <Property Name="m_loc_cnter" Type="bool" />
+          <Property Name="m_loc_hsp" Type="bool" />
+          <Property Name="m_loc_oth" Type="bool" />
+          <Property Name="m_loc_oth_com" Type="varchar" MaxLength="80" />
+          <Property Name="wt_nme" Type="varchar" MaxLength="80" />
+          <Property Name="wt_loc_id" Type="int" />
+          <Property Name="wt_sect_id" Type="int" />
+          <Property Name="officer_id" Type="int" />
+          <Property Name="supervisor_id" Type="int" />
+          <Property Name="user_id" Type="text" />
+          <Property Name="location_id" Type="int" />
+          <Property Name="section_id" Type="int" />
+          <Property Name="team_id" Type="int" />
+        </EntityType>
+        <EntityType Name="form_type">
+          <Key>
+            <PropertyRef Name="form_type_id" />
+          </Key>
+          <Property Name="form_type_id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="incident">
+          <Key>
+            <PropertyRef Name="incident_id" />
+          </Key>
+          <Property Name="incident_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tango" Type="int" />
+          <Property Name="cell" Type="int" />
+          <Property Name="inmate_id" Type="int" />
+          <Property Name="inmate_sys_id" Type="int" />
+          <Property Name="f_name" Type="text" />
+          <Property Name="m_name" Type="text" />
+          <Property Name="l_name" Type="text" />
+          <Property Name="full_name" Type="varchar" MaxLength="100" />
+          <Property Name="dob" Type="date" />
+          <Property Name="age" Type="int" />
+          <Property Name="sex" Type="text" />
+          <Property Name="attended_program" Type="int" />
+          <Property Name="attended_program_name" Type="text" />
+          <Property Name="incident_date" Type="date" />
+          <Property Name="trib_sched_date" Type="date" />
+          <Property Name="incident_time" Type="text" />
+          <Property Name="search_type" Type="int" />
+          <Property Name="violation_id" Type="int" />
+          <Property Name="contraband_type_id" Type="int" />
+          <Property Name="contraband_item" Type="text" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="unit_id" Type="int" />
+          <Property Name="t_case_status" Type="int" />
+          <Property Name="t_data" Type="text" />
+          <Property Name="officer_involved" Type="int" />
+          <Property Name="officer_conducting" Type="int" />
+          <Property Name="officer_reporting" Type="int" />
+          <Property Name="officer_supervisor_id" Type="int" />
+          <Property Name="comment" Type="text" />
+          <Property Name="team_id" Type="int" />
+          <Property Name="user_id" Type="text" />
+          <Property Name="rd_to_pa" Type="bool" Nullable="false" />
+          <Property Name="rd_to_im" Type="bool" Nullable="false" />
+          <Property Name="rd_to_tft" Type="bool" Nullable="false" />
+          <Property Name="rd_to_pua" Type="bool" Nullable="false" />
+          <Property Name="rd_to_dtp" Type="bool" Nullable="false" />
+          <Property Name="rd_to_agod" Type="bool" Nullable="false" />
+          <Property Name="rd_to_db" Type="bool" Nullable="false" />
+          <Property Name="rd_to_rco" Type="bool" Nullable="false" />
+          <Property Name="rd_to_thwds" Type="bool" Nullable="false" />
+          <Property Name="rd_to_fa" Type="bool" Nullable="false" />
+          <Property Name="rd_to_ep" Type="bool" Nullable="false" />
+          <Property Name="rd_to_ea" Type="bool" Nullable="false" />
+          <Property Name="rd_to_sat" Type="bool" Nullable="false" />
+          <Property Name="rd_to_oth" Type="bool" Nullable="false" />
+          <Property Name="violation_oth" Type="varchar" MaxLength="45" />
+          <Property Name="rd_con_cel" Type="bool" Nullable="false" />
+          <Property Name="rd_con_cel_qty" Type="int" />
+          <Property Name="rd_con_cel_uid" Type="int" />
+          <Property Name="rd_con_csh" Type="bool" Nullable="false" />
+          <Property Name="rd_con_csh_qty" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="rd_con_csh_uid" Type="int" />
+          <Property Name="rd_con_sim" Type="bool" Nullable="false" />
+          <Property Name="rd_con_sim_qty" Type="int" />
+          <Property Name="rd_con_sim_uid" Type="int" />
+          <Property Name="rd_con_wn" Type="bool" Nullable="false" />
+          <Property Name="rd_con_wn_qty" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="rd_con_wn_uid" Type="int" />
+          <Property Name="rd_con_bor" Type="bool" Nullable="false" />
+          <Property Name="rd_con_bor_qty" Type="int" />
+          <Property Name="rd_con_bor_uid" Type="int" />
+          <Property Name="rd_con_drg" Type="bool" Nullable="false" />
+          <Property Name="rd_con_drg_qty" Type="int" />
+          <Property Name="rd_con_drg_uid" Type="int" />
+          <Property Name="rd_con_can" Type="bool" Nullable="false" />
+          <Property Name="rd_con_can_qty" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="rd_con_can_uid" Type="int" />
+          <Property Name="rd_con_oth" Type="bool" Nullable="false" />
+          <Property Name="rd_con_oth_qty" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="rd_con_oth_uid" Type="int" />
+          <Property Name="rd_con_prn" Type="bool" Nullable="false" />
+          <Property Name="rd_con_prn_qty" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="rd_con_prn_uid" Type="int" />
+          <Property Name="offence_nature_oth" Type="varchar" MaxLength="45" />
+          <Property Name="contraband_oth" Type="varchar" MaxLength="45" />
+          <Property Name="reason_oth" Type="varchar" MaxLength="45" />
+          <Property Name="weapon_oth" Type="varchar" MaxLength="45" />
+          <Property Name="weapon_id" Type="int" />
+          <Property Name="reason_id" Type="int" />
+          <Property Name="contraband_id" Type="int" />
+          <Property Name="contraband_unit" Type="int" />
+          <Property Name="conceal_method" Type="varchar" MaxLength="45" />
+          <Property Name="offence_nature_id" Type="int" />
+          <Property Name="misc_occurrence" Type="tinytext" />
+          <Property Name="rad_wt_inmate" Type="bool" Nullable="false" />
+          <Property Name="rad_wt_officer" Type="bool" Nullable="false" />
+          <Property Name="rad_wt_civilian" Type="bool" Nullable="false" />
+          <Property Name="rad_wt_none" Type="bool" Nullable="false" />
+          <Property Name="wt_inmate_nme" Type="varchar" MaxLength="80" />
+          <Property Name="wt_officer_nme" Type="varchar" MaxLength="80" />
+          <Property Name="wt_civilian_nme" Type="varchar" MaxLength="80" />
+          <Property Name="wt_officer_loc_id" Type="int" />
+          <Property Name="wt_civilian_loc_id" Type="int" />
+          <Property Name="wt_inmate_loc_id" Type="int" />
+          <Property Name="wt_inmate_cell_id" Type="int" />
+          <Property Name="wt_inmate_oth" Type="varchar" MaxLength="100" />
+          <Property Name="wt_civilian_oth" Type="varchar" MaxLength="100" />
+          <Property Name="wt_officer_oth" Type="varchar" MaxLength="100" />
+          <Property Name="action_taken" Type="text" />
+          <Property Name="at_yn_trans_inmate" Type="bool" Nullable="false" />
+          <Property Name="at_location_id" Type="int" />
+          <Property Name="at_cell_id" Type="int" />
+          <Property Name="at_yn_form_cmp" Type="bool" Nullable="false" />
+          <Property Name="at_yn_chgtrib" Type="bool" Nullable="false" />
+          <Property Name="at_yn_exforce_cmp" Type="bool" Nullable="false" />
+          <Property Name="at_other" Type="varchar" MaxLength="100" />
+          <Property Name="civilian" Type="varchar" MaxLength="250" />
+          <Property Name="form_type_id" Type="utinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="incident_involved">
+          <Key>
+            <PropertyRef Name="incident_involved_id" />
+          </Key>
+          <Property Name="incident_involved_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="incident_id" Type="int" />
+          <Property Name="f_name" Type="text" />
+          <Property Name="l_name" Type="text" />
+          <Property Name="age" Type="int" />
+          <Property Name="location" Type="int" />
+          <Property Name="cell" Type="int" />
+          <Property Name="classification" Type="text" />
+          <Property Name="inmate_sys_id" Type="int" />
+        </EntityType>
+        <EntityType Name="inmate">
+          <Key>
+            <PropertyRef Name="inmate_id" />
+          </Key>
+          <Property Name="inmate_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="inmate_sys_id" Type="int" />
+          <Property Name="f_name" Type="text" />
+          <Property Name="m_name" Type="text" />
+          <Property Name="l_name" Type="text" />
+          <Property Name="full_name" Type="varchar" MaxLength="100" />
+          <Property Name="admiss_dte" Type="date" />
+          <Property Name="dob" Type="date" />
+          <Property Name="age" Type="int" />
+          <Property Name="o_age" Type="int" />
+          <Property Name="sex" Type="text" />
+          <Property Name="ethnicity_id" Type="int" />
+          <Property Name="attended_program" Type="text" />
+          <Property Name="location_parent_id" Type="int" />
+          <Property Name="location_id" Type="int" />
+          <Property Name="country_id" Type="int" />
+          <Property Name="inmate_status_id" Type="int" />
+          <Property Name="custody_status_id" Type="int" />
+          <Property Name="i_photo" Type="longblob" />
+        </EntityType>
+        <EntityType Name="inmate_program">
+          <Key>
+            <PropertyRef Name="inmate_program_id" />
+          </Key>
+          <Property Name="inmate_program_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="inmate_id" Type="int" />
+          <Property Name="program_id" Type="int" />
+        </EntityType>
+        <EntityType Name="interval">
+          <Key>
+            <PropertyRef Name="interval_id" />
+          </Key>
+          <Property Name="interval_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="interval_name" Type="text" />
+        </EntityType>
+        <EntityType Name="location">
+          <Key>
+            <PropertyRef Name="location_id" />
+          </Key>
+          <Property Name="location_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="location_parent_id" Type="int" />
+          <Property Name="tango" Type="text" />
+          <Property Name="location_name" Type="text" />
+        </EntityType>
+        <EntityType Name="location_parent">
+          <Key>
+            <PropertyRef Name="location_parent_id" />
+          </Key>
+          <Property Name="location_parent_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tango" Type="varchar" MaxLength="45" />
+          <Property Name="description" Type="varchar" MaxLength="45" />
+          <Property Name="move_type_det_id" Type="int" />
+        </EntityType>
+        <EntityType Name="move">
+          <Key>
+            <PropertyRef Name="move_id" />
+          </Key>
+          <Property Name="move_id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="person_id" Type="int" />
+          <Property Name="m_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="s_location_id" Type="int" />
+          <Property Name="s_time" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="e_location_id" Type="int" />
+          <Property Name="e_time" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="move_type_id" Type="int" />
+          <Property Name="m_status_id" Type="int" />
+          <Property Name="m_comments" Type="varchar" MaxLength="500" />
+          <Property Name="ext_no" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="move_type">
+          <Key>
+            <PropertyRef Name="move_type_id" />
+          </Key>
+          <Property Name="move_type_id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="m_code" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="m_description" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="dest_type_id" Type="int" />
+        </EntityType>
+        <EntityType Name="move_type_det">
+          <Key>
+            <PropertyRef Name="move_type_det_id" />
+          </Key>
+          <Property Name="move_type_det_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="move_type_id" Type="int" />
+          <Property Name="description" Type="varchar" MaxLength="45" />
+          <Property Name="short_desc" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="offence_nature">
+          <Key>
+            <PropertyRef Name="offence_nature_id" />
+          </Key>
+          <Property Name="offence_nature_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="offence_nature_desc" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="officer">
+          <Key>
+            <PropertyRef Name="officer_id" />
+          </Key>
+          <Property Name="officer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="f_name" Type="text" />
+          <Property Name="m_name" Type="text" />
+          <Property Name="l_name" Type="text" />
+          <Property Name="age" Type="int" />
+          <Property Name="sex" Type="text" />
+          <Property Name="p_location_id" Type="int" />
+        </EntityType>
+        <EntityType Name="p_location">
+          <Key>
+            <PropertyRef Name="p_location_id" />
+          </Key>
+          <Property Name="p_location_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p_name" Type="text" />
+        </EntityType>
+        <EntityType Name="param">
+          <Key>
+            <PropertyRef Name="param_id" />
+            <PropertyRef Name="par_code" />
+            <PropertyRef Name="par_num" />
+          </Key>
+          <Property Name="param_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="par_code" Type="int" Nullable="false" />
+          <Property Name="par_num" Type="int" Nullable="false" />
+          <Property Name="par_desc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="par_charfield" Type="varchar" MaxLength="30" />
+          <Property Name="recordstamp" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="par_numfield" Type="int" />
+          <Property Name="par_table_name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="program">
+          <Key>
+            <PropertyRef Name="program_id" />
+          </Key>
+          <Property Name="program_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="program_class" Type="text" />
+        </EntityType>
+        <EntityType Name="reason">
+          <Key>
+            <PropertyRef Name="reason_id" />
+          </Key>
+          <Property Name="reason_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reason_desc" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="search_type">
+          <Key>
+            <PropertyRef Name="search_type_id" />
+          </Key>
+          <Property Name="search_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="st_name" Type="text" />
+        </EntityType>
+        <EntityType Name="t_verdict">
+          <Key>
+            <PropertyRef Name="t_verdict_id" />
+          </Key>
+          <Property Name="t_verdict_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="t_verdict" Type="text" />
+        </EntityType>
+        <EntityType Name="team">
+          <Key>
+            <PropertyRef Name="team_id" />
+          </Key>
+          <Property Name="team_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="team_name" Type="text" />
+        </EntityType>
+        <EntityType Name="tribunal">
+          <Key>
+            <PropertyRef Name="tribunal_id" />
+          </Key>
+          <Property Name="tribunal_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="text" />
+          <Property Name="incident_id" Type="int" />
+          <Property Name="inmate_id" Type="int" />
+          <Property Name="t_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="t_time" Type="text" />
+          <Property Name="v_act" Type="int" />
+          <Property Name="t_plea" Type="int" />
+          <Property Name="t_verdict" Type="int" />
+          <Property Name="charge" Type="text" />
+          <Property Name="sentence" Type="text" />
+          <Property Name="comments" Type="text" />
+          <Property Name="incident_date" Type="datetime" Precision="0" />
+          <Property Name="t_officer" Type="int" />
+          <Property Name="i_officer" Type="int" />
+          <Property Name="v_location" Type="text" />
+          <Property Name="contraband_item" Type="text" />
+          <Property Name="t_case_status" Type="int" />
+          <Property Name="inmate_name" Type="varchar" MaxLength="50" />
+          <Property Name="v_section" Type="int" />
+          <Property Name="chk_st_caution" Type="bool" Nullable="false" />
+          <Property Name="chk_st_suspend" Type="bool" Nullable="false" />
+          <Property Name="chk_st_full" Type="bool" Nullable="false" />
+          <Property Name="chk_st_loss_fd" Type="bool" Nullable="false" />
+          <Property Name="chk_st_build" Type="bool" Nullable="false" />
+          <Property Name="chk_st_lcv" Type="bool" Nullable="false" />
+          <Property Name="chk_st_personal" Type="bool" Nullable="false" />
+          <Property Name="chk_st_forfeitwg" Type="bool" Nullable="false" />
+          <Property Name="chk_st_losswg" Type="bool" Nullable="false" />
+          <Property Name="s_start_date" Type="datetime" Precision="0" />
+          <Property Name="sb_start_date" Type="datetime" Precision="0" />
+          <Property Name="ss_start_date" Type="datetime" Precision="0" />
+          <Property Name="s_lfd_start_date" Type="datetime" Precision="0" />
+          <Property Name="s_lcv_start_date" Type="datetime" Precision="0" />
+          <Property Name="s_pp_start_date" Type="datetime" Precision="0" />
+          <Property Name="s_fw_start_date" Type="datetime" Precision="0" />
+          <Property Name="s_lw_start_date" Type="datetime" Precision="0" />
+          <Property Name="s_end_date" Type="datetime" Precision="0" />
+          <Property Name="sb_end_date" Type="datetime" Precision="0" />
+          <Property Name="ss_end_date" Type="datetime" Precision="0" />
+          <Property Name="s_lfd_end_date" Type="datetime" Precision="0" />
+          <Property Name="s_lcv_end_date" Type="datetime" Precision="0" />
+          <Property Name="s_pp_end_date" Type="datetime" Precision="0" />
+          <Property Name="s_fw_end_date" Type="datetime" Precision="0" />
+          <Property Name="s_lw_end_date" Type="datetime" Precision="0" />
+          <Property Name="s_duration" Type="varchar" MaxLength="30" />
+          <Property Name="sb_duration" Type="varchar" MaxLength="30" />
+          <Property Name="ss_duration" Type="varchar" MaxLength="30" />
+          <Property Name="s_lfd_duration" Type="varchar" MaxLength="30" />
+          <Property Name="s_lcv_duration" Type="varchar" MaxLength="30" />
+          <Property Name="s_pp_duration" Type="varchar" MaxLength="30" />
+          <Property Name="s_fw_duration" Type="varchar" MaxLength="30" />
+          <Property Name="s_lw_duration" Type="varchar" MaxLength="30" />
+          <Property Name="s_location_id" Type="int" />
+          <Property Name="sb_location_id" Type="int" />
+          <Property Name="s_cell_id" Type="int" />
+          <Property Name="sb_cell_id" Type="int" />
+          <Property Name="s_pp_comments" Type="text" />
+          <Property Name="chk_pr_council" Type="bool" Nullable="false" />
+          <Property Name="chk_pr_medic" Type="bool" Nullable="false" />
+          <Property Name="chk_pr_mediate" Type="bool" Nullable="false" />
+          <Property Name="chk_pr_oth" Type="bool" Nullable="false" />
+          <Property Name="pr_council_com" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="pr_medic_com" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="pr_mediate_com" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="pr_oth_com" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="v_act_code_id" Type="int" />
+          <Property Name="t_panel_name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="u_locale">
+          <Key>
+            <PropertyRef Name="u_local_id" />
+          </Key>
+          <Property Name="u_local_id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uid" Type="uint" Nullable="false" />
+          <Property Name="loc_parent_id" Type="uint" />
+        </EntityType>
+        <EntityType Name="u_module">
+          <Key>
+            <PropertyRef Name="u_module_id" />
+          </Key>
+          <Property Name="u_module_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="u_module_name" Type="text" />
+          <Property Name="u_mod_desc" Type="text" />
+          <Property Name="u_mod_group" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="u_permissions">
+          <Key>
+            <PropertyRef Name="u_permissions_id" />
+          </Key>
+          <Property Name="u_permissions_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="u_module_id" Type="int" Nullable="false" />
+          <Property Name="u_module_all" Type="int" Nullable="false" />
+          <Property Name="u_r" Type="int" Nullable="false" />
+          <Property Name="u_rw" Type="int" Nullable="false" />
+          <Property Name="u_rwa" Type="int" Nullable="false" />
+          <Property Name="u_rd" Type="int" Nullable="false" />
+          <Property Name="u_rwd" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unit">
+          <Key>
+            <PropertyRef Name="unit_id" />
+          </Key>
+          <Property Name="unit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="unit_desc" Type="varchar" MaxLength="45" />
+          <Property Name="unit_abbr" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="u_name" Type="text" Nullable="false" />
+          <Property Name="u_password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="u_group" Type="text" />
+          <Property Name="f_name" Type="varchar" MaxLength="45" />
+          <Property Name="l_name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="v_act_code">
+          <Key>
+            <PropertyRef Name="v_act_code_id" />
+          </Key>
+          <Property Name="v_act_code_id" Type="int" Nullable="false" />
+          <Property Name="violation_act_id" Type="int" />
+          <Property Name="reporting_code" Type="varchar" MaxLength="8" />
+          <Property Name="r_short_desc" Type="varchar" MaxLength="45" />
+          <Property Name="r_code_desc" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="violation">
+          <Key>
+            <PropertyRef Name="violation_id" />
+          </Key>
+          <Property Name="violation_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="offence_name" Type="text" />
+          <Property Name="short_desc" Type="char" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="violation_act">
+          <Key>
+            <PropertyRef Name="violation_act_id" />
+          </Key>
+          <Property Name="violation_act_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="violation_id" Type="int" />
+          <Property Name="v_section" Type="varchar" MaxLength="45" />
+          <Property Name="v_section_desc" Type="varchar" MaxLength="80" />
+          <Property Name="v_subsection" Type="varchar" MaxLength="5" />
+          <Property Name="v_subsection_desc" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="weapon">
+          <Key>
+            <PropertyRef Name="weapon_id" />
+          </Key>
+          <Property Name="weapon_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="weapon_desc" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <Association Name="ApplicationUser_Claims">
+          <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnetuserclaims" Type="Self.aspnetuserclaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetusers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserclaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Logins">
+          <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnetuserlogins" Type="Self.aspnetuserlogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetusers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserlogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Roles">
+          <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnetuserroles" Type="Self.aspnetuserroles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetusers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserroles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdentityRole_Users">
+          <End Role="aspnetroles" Type="Self.aspnetroles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnetuserroles" Type="Self.aspnetuserroles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetroles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserroles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbkolbeModelStoreContainer">
+          <EntitySet Name="age" EntityType="Self.age" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="aspnetroles" EntityType="Self.aspnetroles" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="aspnetuserclaims" EntityType="Self.aspnetuserclaims" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="aspnetuserlogins" EntityType="Self.aspnetuserlogins" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="aspnetuserroles" EntityType="Self.aspnetuserroles" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="aspnetusers" EntityType="Self.aspnetusers" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="civilian" EntityType="Self.civilian" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="confiscation_type" EntityType="Self.confiscation_type" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="contraband" EntityType="Self.contraband" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="contraband_type" EntityType="Self.contraband_type" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="country" EntityType="Self.country" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="dest_type" EntityType="Self.dest_type" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="excess_force" EntityType="Self.excess_force" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="form_type" EntityType="Self.form_type" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="incident" EntityType="Self.incident" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="incident_involved" EntityType="Self.incident_involved" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="inmate" EntityType="Self.inmate" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="inmate_program" EntityType="Self.inmate_program" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="interval" EntityType="Self.interval" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="location" EntityType="Self.location" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="location_parent" EntityType="Self.location_parent" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="move" EntityType="Self.move" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="move_type" EntityType="Self.move_type" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="move_type_det" EntityType="Self.move_type_det" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="offence_nature" EntityType="Self.offence_nature" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="officer" EntityType="Self.officer" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="p_location" EntityType="Self.p_location" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="param" EntityType="Self.param" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="program" EntityType="Self.program" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="reason" EntityType="Self.reason" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="search_type" EntityType="Self.search_type" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="t_verdict" EntityType="Self.t_verdict" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="team" EntityType="Self.team" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="tribunal" EntityType="Self.tribunal" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="u_locale" EntityType="Self.u_locale" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="u_module" EntityType="Self.u_module" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="u_permissions" EntityType="Self.u_permissions" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="unit" EntityType="Self.unit" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="v_act_code" EntityType="Self.v_act_code" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="violation" EntityType="Self.violation" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="violation_act" EntityType="Self.violation_act" Schema="dbkolbe" store:Type="Tables" />
+          <EntitySet Name="weapon" EntityType="Self.weapon" Schema="dbkolbe" store:Type="Tables" />
+          <AssociationSet Name="ApplicationUser_Claims" Association="Self.ApplicationUser_Claims">
+            <End Role="aspnetusers" EntitySet="aspnetusers" />
+            <End Role="aspnetuserclaims" EntitySet="aspnetuserclaims" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Logins" Association="Self.ApplicationUser_Logins">
+            <End Role="aspnetusers" EntitySet="aspnetusers" />
+            <End Role="aspnetuserlogins" EntitySet="aspnetuserlogins" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Roles" Association="Self.ApplicationUser_Roles">
+            <End Role="aspnetusers" EntitySet="aspnetusers" />
+            <End Role="aspnetuserroles" EntitySet="aspnetuserroles" />
+          </AssociationSet>
+          <AssociationSet Name="IdentityRole_Users" Association="Self.IdentityRole_Users">
+            <End Role="aspnetroles" EntitySet="aspnetroles" />
+            <End Role="aspnetuserroles" EntitySet="aspnetuserroles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbkolbeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="age">
+          <Key>
+            <PropertyRef Name="age_id" />
+          </Key>
+          <Property Name="age_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="a_age" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="a_range" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnetrole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="aspnetusers" Relationship="Self.aspnetuserroles" FromRole="aspnetroles" ToRole="aspnetusers" />
+        </EntityType>
+        <EntityType Name="aspnetuserclaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="ClaimValue" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="aspnetuser" Relationship="Self.ApplicationUser_Claims" FromRole="aspnetuserclaims" ToRole="aspnetusers" />
+        </EntityType>
+        <EntityType Name="aspnetuserlogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="aspnetuser" Relationship="Self.ApplicationUser_Logins" FromRole="aspnetuserlogins" ToRole="aspnetusers" />
+        </EntityType>
+        <EntityType Name="aspnetuser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="aspnetuserclaims" Relationship="Self.ApplicationUser_Claims" FromRole="aspnetusers" ToRole="aspnetuserclaims" />
+          <NavigationProperty Name="aspnetuserlogins" Relationship="Self.ApplicationUser_Logins" FromRole="aspnetusers" ToRole="aspnetuserlogins" />
+          <NavigationProperty Name="aspnetroles" Relationship="Self.aspnetuserroles" FromRole="aspnetusers" ToRole="aspnetroles" />
+        </EntityType>
+        <EntityType Name="civilian">
+          <Key>
+            <PropertyRef Name="civilian_id" />
+          </Key>
+          <Property Name="civilian_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="f_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="m_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="l_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="age" Type="Int64" />
+          <Property Name="sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="p_location_id" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="confiscation_type">
+          <Key>
+            <PropertyRef Name="confiscation_type_id" />
+          </Key>
+          <Property Name="confiscation_type_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cnf_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contraband">
+          <Key>
+            <PropertyRef Name="contraband_id" />
+          </Key>
+          <Property Name="contraband_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contraband_desc" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="contraband_type_id" Type="Int64" />
+          <Property Name="confiscation_type_id" Type="Int64" />
+        </EntityType>
+        <EntityType Name="contraband_type">
+          <Key>
+            <PropertyRef Name="contraband_type_id" />
+          </Key>
+          <Property Name="contraband_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ct_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="country_id" />
+          </Key>
+          <Property Name="country_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dest_type">
+          <Key>
+            <PropertyRef Name="dest_type_id" />
+          </Key>
+          <Property Name="dest_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="d_code" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="d_description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="excess_force">
+          <Key>
+            <PropertyRef Name="excess_force_id" />
+          </Key>
+          <Property Name="excess_force_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="incident_id" Type="Int32" />
+          <Property Name="inmates_connected" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ru_pro_slf_chk" Type="Boolean" />
+          <Property Name="ru_pro_oth_e_chk" Type="Boolean" />
+          <Property Name="ru_prv_esc_chk" Type="Boolean" />
+          <Property Name="ru_sb_inm_nc_chk" Type="Boolean" />
+          <Property Name="ru_sb_vio_in_chk" Type="Boolean" />
+          <Property Name="ru_sb_vio_e_chk" Type="Boolean" />
+          <Property Name="ru_sb_dis_chk" Type="Boolean" />
+          <Property Name="ru_sb_thr_chk" Type="Boolean" />
+          <Property Name="t_frc_phy_chk" Type="Boolean" />
+          <Property Name="t_frc_bat_chk" Type="Boolean" />
+          <Property Name="t_frc_spr_chk" Type="Boolean" />
+          <Property Name="t_frc_fa_chk" Type="Boolean" />
+          <Property Name="t_frc_oth_chk" Type="Boolean" />
+          <Property Name="t_frc_oth_com" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="injury" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="m_treatment" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="m_assess_yn" Type="Boolean" />
+          <Property Name="m_adminst_yn" Type="Boolean" />
+          <Property Name="m_administered" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="m_loc_cnter" Type="Boolean" />
+          <Property Name="m_loc_hsp" Type="Boolean" />
+          <Property Name="m_loc_oth" Type="Boolean" />
+          <Property Name="m_loc_oth_com" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="wt_nme" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="wt_loc_id" Type="Int32" />
+          <Property Name="wt_sect_id" Type="Int32" />
+          <Property Name="officer_id" Type="Int32" />
+          <Property Name="supervisor_id" Type="Int32" />
+          <Property Name="user_id" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="location_id" Type="Int32" />
+          <Property Name="section_id" Type="Int32" />
+          <Property Name="team_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="form_type">
+          <Key>
+            <PropertyRef Name="form_type_id" />
+          </Key>
+          <Property Name="form_type_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="incident">
+          <Key>
+            <PropertyRef Name="incident_id" />
+          </Key>
+          <Property Name="incident_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tango" Type="Int32" />
+          <Property Name="cell" Type="Int32" />
+          <Property Name="inmate_id" Type="Int32" />
+          <Property Name="inmate_sys_id" Type="Int32" />
+          <Property Name="f_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="m_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="l_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="full_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="DateTime" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="sex" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="attended_program" Type="Int32" />
+          <Property Name="attended_program_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="incident_date" Type="DateTime" />
+          <Property Name="trib_sched_date" Type="DateTime" />
+          <Property Name="incident_time" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="search_type" Type="Int32" />
+          <Property Name="violation_id" Type="Int32" />
+          <Property Name="contraband_type_id" Type="Int32" />
+          <Property Name="contraband_item" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="unit_id" Type="Int32" />
+          <Property Name="t_case_status" Type="Int32" />
+          <Property Name="t_data" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="officer_involved" Type="Int32" />
+          <Property Name="officer_conducting" Type="Int32" />
+          <Property Name="officer_reporting" Type="Int32" />
+          <Property Name="officer_supervisor_id" Type="Int32" />
+          <Property Name="comment" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="team_id" Type="Int32" />
+          <Property Name="user_id" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="rd_to_pa" Type="Boolean" Nullable="false" />
+          <Property Name="rd_to_im" Type="Boolean" Nullable="false" />
+          <Property Name="rd_to_tft" Type="Boolean" Nullable="false" />
+          <Property Name="rd_to_pua" Type="Boolean" Nullable="false" />
+          <Property Name="rd_to_dtp" Type="Boolean" Nullable="false" />
+          <Property Name="rd_to_agod" Type="Boolean" Nullable="false" />
+          <Property Name="rd_to_db" Type="Boolean" Nullable="false" />
+          <Property Name="rd_to_rco" Type="Boolean" Nullable="false" />
+          <Property Name="rd_to_thwds" Type="Boolean" Nullable="false" />
+          <Property Name="rd_to_fa" Type="Boolean" Nullable="false" />
+          <Property Name="rd_to_ep" Type="Boolean" Nullable="false" />
+          <Property Name="rd_to_ea" Type="Boolean" Nullable="false" />
+          <Property Name="rd_to_sat" Type="Boolean" Nullable="false" />
+          <Property Name="rd_to_oth" Type="Boolean" Nullable="false" />
+          <Property Name="violation_oth" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="rd_con_cel" Type="Boolean" Nullable="false" />
+          <Property Name="rd_con_cel_qty" Type="Int32" />
+          <Property Name="rd_con_cel_uid" Type="Int32" />
+          <Property Name="rd_con_csh" Type="Boolean" Nullable="false" />
+          <Property Name="rd_con_csh_qty" Type="Decimal" />
+          <Property Name="rd_con_csh_uid" Type="Int32" />
+          <Property Name="rd_con_sim" Type="Boolean" Nullable="false" />
+          <Property Name="rd_con_sim_qty" Type="Int32" />
+          <Property Name="rd_con_sim_uid" Type="Int32" />
+          <Property Name="rd_con_wn" Type="Boolean" Nullable="false" />
+          <Property Name="rd_con_wn_qty" Type="Decimal" />
+          <Property Name="rd_con_wn_uid" Type="Int32" />
+          <Property Name="rd_con_bor" Type="Boolean" Nullable="false" />
+          <Property Name="rd_con_bor_qty" Type="Int32" />
+          <Property Name="rd_con_bor_uid" Type="Int32" />
+          <Property Name="rd_con_drg" Type="Boolean" Nullable="false" />
+          <Property Name="rd_con_drg_qty" Type="Int32" />
+          <Property Name="rd_con_drg_uid" Type="Int32" />
+          <Property Name="rd_con_can" Type="Boolean" Nullable="false" />
+          <Property Name="rd_con_can_qty" Type="Decimal" />
+          <Property Name="rd_con_can_uid" Type="Int32" />
+          <Property Name="rd_con_oth" Type="Boolean" Nullable="false" />
+          <Property Name="rd_con_oth_qty" Type="Decimal" />
+          <Property Name="rd_con_oth_uid" Type="Int32" />
+          <Property Name="rd_con_prn" Type="Boolean" Nullable="false" />
+          <Property Name="rd_con_prn_qty" Type="Decimal" />
+          <Property Name="rd_con_prn_uid" Type="Int32" />
+          <Property Name="offence_nature_oth" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="contraband_oth" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="reason_oth" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="weapon_oth" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="weapon_id" Type="Int32" />
+          <Property Name="reason_id" Type="Int32" />
+          <Property Name="contraband_id" Type="Int32" />
+          <Property Name="contraband_unit" Type="Int32" />
+          <Property Name="conceal_method" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="offence_nature_id" Type="Int32" />
+          <Property Name="misc_occurrence" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="rad_wt_inmate" Type="Boolean" Nullable="false" />
+          <Property Name="rad_wt_officer" Type="Boolean" Nullable="false" />
+          <Property Name="rad_wt_civilian" Type="Boolean" Nullable="false" />
+          <Property Name="rad_wt_none" Type="Boolean" Nullable="false" />
+          <Property Name="wt_inmate_nme" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="wt_officer_nme" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="wt_civilian_nme" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="wt_officer_loc_id" Type="Int32" />
+          <Property Name="wt_civilian_loc_id" Type="Int32" />
+          <Property Name="wt_inmate_loc_id" Type="Int32" />
+          <Property Name="wt_inmate_cell_id" Type="Int32" />
+          <Property Name="wt_inmate_oth" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="wt_civilian_oth" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="wt_officer_oth" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="action_taken" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="at_yn_trans_inmate" Type="Boolean" Nullable="false" />
+          <Property Name="at_location_id" Type="Int32" />
+          <Property Name="at_cell_id" Type="Int32" />
+          <Property Name="at_yn_form_cmp" Type="Boolean" Nullable="false" />
+          <Property Name="at_yn_chgtrib" Type="Boolean" Nullable="false" />
+          <Property Name="at_yn_exforce_cmp" Type="Boolean" Nullable="false" />
+          <Property Name="at_other" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="civilian" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="form_type_id" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="incident_involved">
+          <Key>
+            <PropertyRef Name="incident_involved_id" />
+          </Key>
+          <Property Name="incident_involved_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="incident_id" Type="Int32" />
+          <Property Name="f_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="l_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="location" Type="Int32" />
+          <Property Name="cell" Type="Int32" />
+          <Property Name="classification" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="inmate_sys_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="inmate">
+          <Key>
+            <PropertyRef Name="inmate_id" />
+          </Key>
+          <Property Name="inmate_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="inmate_sys_id" Type="Int32" />
+          <Property Name="f_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="m_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="l_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="full_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="admiss_dte" Type="DateTime" />
+          <Property Name="dob" Type="DateTime" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="o_age" Type="Int32" />
+          <Property Name="sex" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="ethnicity_id" Type="Int32" />
+          <Property Name="attended_program" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="location_parent_id" Type="Int32" />
+          <Property Name="location_id" Type="Int32" />
+          <Property Name="country_id" Type="Int32" />
+          <Property Name="inmate_status_id" Type="Int32" />
+          <Property Name="custody_status_id" Type="Int32" />
+          <Property Name="i_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="inmate_program">
+          <Key>
+            <PropertyRef Name="inmate_program_id" />
+          </Key>
+          <Property Name="inmate_program_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="inmate_id" Type="Int32" />
+          <Property Name="program_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="interval">
+          <Key>
+            <PropertyRef Name="interval_id" />
+          </Key>
+          <Property Name="interval_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="interval_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="location">
+          <Key>
+            <PropertyRef Name="location_id" />
+          </Key>
+          <Property Name="location_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="location_parent_id" Type="Int32" />
+          <Property Name="tango" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="location_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="location_parent">
+          <Key>
+            <PropertyRef Name="location_parent_id" />
+          </Key>
+          <Property Name="location_parent_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tango" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="move_type_det_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="move">
+          <Key>
+            <PropertyRef Name="move_id" />
+          </Key>
+          <Property Name="move_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="person_id" Type="Int32" />
+          <Property Name="m_date" Type="DateTime" Nullable="false" />
+          <Property Name="s_location_id" Type="Int32" />
+          <Property Name="s_time" Type="DateTime" Nullable="false" />
+          <Property Name="e_location_id" Type="Int32" />
+          <Property Name="e_time" Type="DateTime" Nullable="false" />
+          <Property Name="move_type_id" Type="Int32" />
+          <Property Name="m_status_id" Type="Int32" />
+          <Property Name="m_comments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ext_no" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="move_type">
+          <Key>
+            <PropertyRef Name="move_type_id" />
+          </Key>
+          <Property Name="move_type_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="m_code" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="m_description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dest_type_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="move_type_det">
+          <Key>
+            <PropertyRef Name="move_type_det_id" />
+          </Key>
+          <Property Name="move_type_det_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="move_type_id" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="short_desc" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="offence_nature">
+          <Key>
+            <PropertyRef Name="offence_nature_id" />
+          </Key>
+          <Property Name="offence_nature_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="offence_nature_desc" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="officer">
+          <Key>
+            <PropertyRef Name="officer_id" />
+          </Key>
+          <Property Name="officer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="f_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="m_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="l_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="sex" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="p_location_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="p_location">
+          <Key>
+            <PropertyRef Name="p_location_id" />
+          </Key>
+          <Property Name="p_location_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="param">
+          <Key>
+            <PropertyRef Name="param_id" />
+            <PropertyRef Name="par_code" />
+            <PropertyRef Name="par_num" />
+          </Key>
+          <Property Name="param_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="par_code" Type="Int32" Nullable="false" />
+          <Property Name="par_num" Type="Int32" Nullable="false" />
+          <Property Name="par_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="par_charfield" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="recordstamp" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="par_numfield" Type="Int32" />
+          <Property Name="par_table_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="program">
+          <Key>
+            <PropertyRef Name="program_id" />
+          </Key>
+          <Property Name="program_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="program_class" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="reason">
+          <Key>
+            <PropertyRef Name="reason_id" />
+          </Key>
+          <Property Name="reason_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reason_desc" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="search_type">
+          <Key>
+            <PropertyRef Name="search_type_id" />
+          </Key>
+          <Property Name="search_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="st_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="t_verdict">
+          <Key>
+            <PropertyRef Name="t_verdict_id" />
+          </Key>
+          <Property Name="t_verdict_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="t_verdict1" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="team">
+          <Key>
+            <PropertyRef Name="team_id" />
+          </Key>
+          <Property Name="team_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="team_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tribunal">
+          <Key>
+            <PropertyRef Name="tribunal_id" />
+          </Key>
+          <Property Name="tribunal_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="incident_id" Type="Int32" />
+          <Property Name="inmate_id" Type="Int32" />
+          <Property Name="t_date" Type="DateTime" Nullable="false" />
+          <Property Name="t_time" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="v_act" Type="Int32" />
+          <Property Name="t_plea" Type="Int32" />
+          <Property Name="t_verdict" Type="Int32" />
+          <Property Name="charge" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="sentence" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="comments" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="incident_date" Type="DateTime" />
+          <Property Name="t_officer" Type="Int32" />
+          <Property Name="i_officer" Type="Int32" />
+          <Property Name="v_location" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="contraband_item" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="t_case_status" Type="Int32" />
+          <Property Name="inmate_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="v_section" Type="Int32" />
+          <Property Name="chk_st_caution" Type="Boolean" Nullable="false" />
+          <Property Name="chk_st_suspend" Type="Boolean" Nullable="false" />
+          <Property Name="chk_st_full" Type="Boolean" Nullable="false" />
+          <Property Name="chk_st_loss_fd" Type="Boolean" Nullable="false" />
+          <Property Name="chk_st_build" Type="Boolean" Nullable="false" />
+          <Property Name="chk_st_lcv" Type="Boolean" Nullable="false" />
+          <Property Name="chk_st_personal" Type="Boolean" Nullable="false" />
+          <Property Name="chk_st_forfeitwg" Type="Boolean" Nullable="false" />
+          <Property Name="chk_st_losswg" Type="Boolean" Nullable="false" />
+          <Property Name="s_start_date" Type="DateTime" />
+          <Property Name="sb_start_date" Type="DateTime" />
+          <Property Name="ss_start_date" Type="DateTime" />
+          <Property Name="s_lfd_start_date" Type="DateTime" />
+          <Property Name="s_lcv_start_date" Type="DateTime" />
+          <Property Name="s_pp_start_date" Type="DateTime" />
+          <Property Name="s_fw_start_date" Type="DateTime" />
+          <Property Name="s_lw_start_date" Type="DateTime" />
+          <Property Name="s_end_date" Type="DateTime" />
+          <Property Name="sb_end_date" Type="DateTime" />
+          <Property Name="ss_end_date" Type="DateTime" />
+          <Property Name="s_lfd_end_date" Type="DateTime" />
+          <Property Name="s_lcv_end_date" Type="DateTime" />
+          <Property Name="s_pp_end_date" Type="DateTime" />
+          <Property Name="s_fw_end_date" Type="DateTime" />
+          <Property Name="s_lw_end_date" Type="DateTime" />
+          <Property Name="s_duration" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="sb_duration" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ss_duration" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="s_lfd_duration" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="s_lcv_duration" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="s_pp_duration" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="s_fw_duration" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="s_lw_duration" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="s_location_id" Type="Int32" />
+          <Property Name="sb_location_id" Type="Int32" />
+          <Property Name="s_cell_id" Type="Int32" />
+          <Property Name="sb_cell_id" Type="Int32" />
+          <Property Name="s_pp_comments" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="chk_pr_council" Type="Boolean" Nullable="false" />
+          <Property Name="chk_pr_medic" Type="Boolean" Nullable="false" />
+          <Property Name="chk_pr_mediate" Type="Boolean" Nullable="false" />
+          <Property Name="chk_pr_oth" Type="Boolean" Nullable="false" />
+          <Property Name="pr_council_com" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pr_medic_com" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pr_mediate_com" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pr_oth_com" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="v_act_code_id" Type="Int32" />
+          <Property Name="t_panel_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="u_locale">
+          <Key>
+            <PropertyRef Name="u_local_id" />
+          </Key>
+          <Property Name="u_local_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int64" Nullable="false" />
+          <Property Name="loc_parent_id" Type="Int64" />
+        </EntityType>
+        <EntityType Name="u_module">
+          <Key>
+            <PropertyRef Name="u_module_id" />
+          </Key>
+          <Property Name="u_module_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="u_module_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="u_mod_desc" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="u_mod_group" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="u_permissions">
+          <Key>
+            <PropertyRef Name="u_permissions_id" />
+          </Key>
+          <Property Name="u_permissions_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="u_module_id" Type="Int32" Nullable="false" />
+          <Property Name="u_module_all" Type="Int32" Nullable="false" />
+          <Property Name="u_r" Type="Int32" Nullable="false" />
+          <Property Name="u_rw" Type="Int32" Nullable="false" />
+          <Property Name="u_rwa" Type="Int32" Nullable="false" />
+          <Property Name="u_rd" Type="Int32" Nullable="false" />
+          <Property Name="u_rwd" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unit">
+          <Key>
+            <PropertyRef Name="unit_id" />
+          </Key>
+          <Property Name="unit_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="unit_desc" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="unit_abbr" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="u_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="u_password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="u_group" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="f_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="l_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="v_act_code">
+          <Key>
+            <PropertyRef Name="v_act_code_id" />
+          </Key>
+          <Property Name="v_act_code_id" Type="Int32" Nullable="false" />
+          <Property Name="violation_act_id" Type="Int32" />
+          <Property Name="reporting_code" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="r_short_desc" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="r_code_desc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="violation">
+          <Key>
+            <PropertyRef Name="violation_id" />
+          </Key>
+          <Property Name="violation_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="offence_name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="short_desc" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="violation_act">
+          <Key>
+            <PropertyRef Name="violation_act_id" />
+          </Key>
+          <Property Name="violation_act_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="violation_id" Type="Int32" />
+          <Property Name="v_section" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="v_section_desc" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="v_subsection" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="v_subsection_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="weapon">
+          <Key>
+            <PropertyRef Name="weapon_id" />
+          </Key>
+          <Property Name="weapon_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="weapon_desc" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="ApplicationUser_Claims">
+          <End Role="aspnetusers" Type="Self.aspnetuser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnetuserclaims" Type="Self.aspnetuserclaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetusers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserclaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Logins">
+          <End Role="aspnetusers" Type="Self.aspnetuser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnetuserlogins" Type="Self.aspnetuserlogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetusers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserlogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aspnetuserroles">
+          <End Role="aspnetusers" Type="Self.aspnetuser" Multiplicity="*" />
+          <End Role="aspnetroles" Type="Self.aspnetrole" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="dbkolbeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ages" EntityType="Self.age" />
+          <EntitySet Name="aspnetroles" EntityType="Self.aspnetrole" />
+          <EntitySet Name="aspnetuserclaims" EntityType="Self.aspnetuserclaim" />
+          <EntitySet Name="aspnetuserlogins" EntityType="Self.aspnetuserlogin" />
+          <EntitySet Name="aspnetusers" EntityType="Self.aspnetuser" />
+          <EntitySet Name="civilians" EntityType="Self.civilian" />
+          <EntitySet Name="confiscation_type" EntityType="Self.confiscation_type" />
+          <EntitySet Name="contrabands" EntityType="Self.contraband" />
+          <EntitySet Name="contraband_type" EntityType="Self.contraband_type" />
+          <EntitySet Name="countries" EntityType="Self.country" />
+          <EntitySet Name="dest_type" EntityType="Self.dest_type" />
+          <EntitySet Name="excess_force" EntityType="Self.excess_force" />
+          <EntitySet Name="form_type" EntityType="Self.form_type" />
+          <EntitySet Name="incidents" EntityType="Self.incident" />
+          <EntitySet Name="incident_involved" EntityType="Self.incident_involved" />
+          <EntitySet Name="inmates" EntityType="Self.inmate" />
+          <EntitySet Name="inmate_program" EntityType="Self.inmate_program" />
+          <EntitySet Name="intervals" EntityType="Self.interval" />
+          <EntitySet Name="locations" EntityType="Self.location" />
+          <EntitySet Name="location_parent" EntityType="Self.location_parent" />
+          <EntitySet Name="moves" EntityType="Self.move" />
+          <EntitySet Name="move_type" EntityType="Self.move_type" />
+          <EntitySet Name="move_type_det" EntityType="Self.move_type_det" />
+          <EntitySet Name="offence_nature" EntityType="Self.offence_nature" />
+          <EntitySet Name="officers" EntityType="Self.officer" />
+          <EntitySet Name="p_location" EntityType="Self.p_location" />
+          <EntitySet Name="params" EntityType="Self.param" />
+          <EntitySet Name="programs" EntityType="Self.program" />
+          <EntitySet Name="reasons" EntityType="Self.reason" />
+          <EntitySet Name="search_type" EntityType="Self.search_type" />
+          <EntitySet Name="t_verdict" EntityType="Self.t_verdict" />
+          <EntitySet Name="teams" EntityType="Self.team" />
+          <EntitySet Name="tribunals" EntityType="Self.tribunal" />
+          <EntitySet Name="u_locale" EntityType="Self.u_locale" />
+          <EntitySet Name="u_module" EntityType="Self.u_module" />
+          <EntitySet Name="u_permissions" EntityType="Self.u_permissions" />
+          <EntitySet Name="units" EntityType="Self.unit" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="v_act_code" EntityType="Self.v_act_code" />
+          <EntitySet Name="violations" EntityType="Self.violation" />
+          <EntitySet Name="violation_act" EntityType="Self.violation_act" />
+          <EntitySet Name="weapons" EntityType="Self.weapon" />
+          <AssociationSet Name="ApplicationUser_Claims" Association="Self.ApplicationUser_Claims">
+            <End Role="aspnetusers" EntitySet="aspnetusers" />
+            <End Role="aspnetuserclaims" EntitySet="aspnetuserclaims" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Logins" Association="Self.ApplicationUser_Logins">
+            <End Role="aspnetusers" EntitySet="aspnetusers" />
+            <End Role="aspnetuserlogins" EntitySet="aspnetuserlogins" />
+          </AssociationSet>
+          <AssociationSet Name="aspnetuserroles" Association="Self.aspnetuserroles">
+            <End Role="aspnetusers" EntitySet="aspnetusers" />
+            <End Role="aspnetroles" EntitySet="aspnetroles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbkolbeModelStoreContainer" CdmEntityContainer="dbkolbeEntities">
+          <EntitySetMapping Name="ages">
+            <EntityTypeMapping TypeName="dbkolbeModel.age">
+              <MappingFragment StoreEntitySet="age">
+                <ScalarProperty Name="age_id" ColumnName="age_id" />
+                <ScalarProperty Name="a_age" ColumnName="a_age" />
+                <ScalarProperty Name="a_range" ColumnName="a_range" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnetroles">
+            <EntityTypeMapping TypeName="dbkolbeModel.aspnetrole">
+              <MappingFragment StoreEntitySet="aspnetroles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnetuserclaims">
+            <EntityTypeMapping TypeName="dbkolbeModel.aspnetuserclaim">
+              <MappingFragment StoreEntitySet="aspnetuserclaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnetuserlogins">
+            <EntityTypeMapping TypeName="dbkolbeModel.aspnetuserlogin">
+              <MappingFragment StoreEntitySet="aspnetuserlogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnetusers">
+            <EntityTypeMapping TypeName="dbkolbeModel.aspnetuser">
+              <MappingFragment StoreEntitySet="aspnetusers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="civilians">
+            <EntityTypeMapping TypeName="dbkolbeModel.civilian">
+              <MappingFragment StoreEntitySet="civilian">
+                <ScalarProperty Name="civilian_id" ColumnName="civilian_id" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="m_name" ColumnName="m_name" />
+                <ScalarProperty Name="l_name" ColumnName="l_name" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="p_location_id" ColumnName="p_location_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="confiscation_type">
+            <EntityTypeMapping TypeName="dbkolbeModel.confiscation_type">
+              <MappingFragment StoreEntitySet="confiscation_type">
+                <ScalarProperty Name="confiscation_type_id" ColumnName="confiscation_type_id" />
+                <ScalarProperty Name="cnf_name" ColumnName="cnf_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contrabands">
+            <EntityTypeMapping TypeName="dbkolbeModel.contraband">
+              <MappingFragment StoreEntitySet="contraband">
+                <ScalarProperty Name="contraband_id" ColumnName="contraband_id" />
+                <ScalarProperty Name="contraband_desc" ColumnName="contraband_desc" />
+                <ScalarProperty Name="contraband_type_id" ColumnName="contraband_type_id" />
+                <ScalarProperty Name="confiscation_type_id" ColumnName="confiscation_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contraband_type">
+            <EntityTypeMapping TypeName="dbkolbeModel.contraband_type">
+              <MappingFragment StoreEntitySet="contraband_type">
+                <ScalarProperty Name="contraband_type_id" ColumnName="contraband_type_id" />
+                <ScalarProperty Name="ct_name" ColumnName="ct_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="countries">
+            <EntityTypeMapping TypeName="dbkolbeModel.country">
+              <MappingFragment StoreEntitySet="country">
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dest_type">
+            <EntityTypeMapping TypeName="dbkolbeModel.dest_type">
+              <MappingFragment StoreEntitySet="dest_type">
+                <ScalarProperty Name="dest_type_id" ColumnName="dest_type_id" />
+                <ScalarProperty Name="d_code" ColumnName="d_code" />
+                <ScalarProperty Name="d_description" ColumnName="d_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="excess_force">
+            <EntityTypeMapping TypeName="dbkolbeModel.excess_force">
+              <MappingFragment StoreEntitySet="excess_force">
+                <ScalarProperty Name="excess_force_id" ColumnName="excess_force_id" />
+                <ScalarProperty Name="incident_id" ColumnName="incident_id" />
+                <ScalarProperty Name="inmates_connected" ColumnName="inmates_connected" />
+                <ScalarProperty Name="ru_pro_slf_chk" ColumnName="ru_pro_slf_chk" />
+                <ScalarProperty Name="ru_pro_oth_e_chk" ColumnName="ru_pro_oth_e_chk" />
+                <ScalarProperty Name="ru_prv_esc_chk" ColumnName="ru_prv_esc_chk" />
+                <ScalarProperty Name="ru_sb_inm_nc_chk" ColumnName="ru_sb_inm_nc_chk" />
+                <ScalarProperty Name="ru_sb_vio_in_chk" ColumnName="ru_sb_vio_in_chk" />
+                <ScalarProperty Name="ru_sb_vio_e_chk" ColumnName="ru_sb_vio_e_chk" />
+                <ScalarProperty Name="ru_sb_dis_chk" ColumnName="ru_sb_dis_chk" />
+                <ScalarProperty Name="ru_sb_thr_chk" ColumnName="ru_sb_thr_chk" />
+                <ScalarProperty Name="t_frc_phy_chk" ColumnName="t_frc_phy_chk" />
+                <ScalarProperty Name="t_frc_bat_chk" ColumnName="t_frc_bat_chk" />
+                <ScalarProperty Name="t_frc_spr_chk" ColumnName="t_frc_spr_chk" />
+                <ScalarProperty Name="t_frc_fa_chk" ColumnName="t_frc_fa_chk" />
+                <ScalarProperty Name="t_frc_oth_chk" ColumnName="t_frc_oth_chk" />
+                <ScalarProperty Name="t_frc_oth_com" ColumnName="t_frc_oth_com" />
+                <ScalarProperty Name="injury" ColumnName="injury" />
+                <ScalarProperty Name="m_treatment" ColumnName="m_treatment" />
+                <ScalarProperty Name="m_assess_yn" ColumnName="m_assess_yn" />
+                <ScalarProperty Name="m_adminst_yn" ColumnName="m_adminst_yn" />
+                <ScalarProperty Name="m_administered" ColumnName="m_administered" />
+                <ScalarProperty Name="m_loc_cnter" ColumnName="m_loc_cnter" />
+                <ScalarProperty Name="m_loc_hsp" ColumnName="m_loc_hsp" />
+                <ScalarProperty Name="m_loc_oth" ColumnName="m_loc_oth" />
+                <ScalarProperty Name="m_loc_oth_com" ColumnName="m_loc_oth_com" />
+                <ScalarProperty Name="wt_nme" ColumnName="wt_nme" />
+                <ScalarProperty Name="wt_loc_id" ColumnName="wt_loc_id" />
+                <ScalarProperty Name="wt_sect_id" ColumnName="wt_sect_id" />
+                <ScalarProperty Name="officer_id" ColumnName="officer_id" />
+                <ScalarProperty Name="supervisor_id" ColumnName="supervisor_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="location_id" ColumnName="location_id" />
+                <ScalarProperty Name="section_id" ColumnName="section_id" />
+                <ScalarProperty Name="team_id" ColumnName="team_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="form_type">
+            <EntityTypeMapping TypeName="dbkolbeModel.form_type">
+              <MappingFragment StoreEntitySet="form_type">
+                <ScalarProperty Name="form_type_id" ColumnName="form_type_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="incidents">
+            <EntityTypeMapping TypeName="dbkolbeModel.incident">
+              <MappingFragment StoreEntitySet="incident">
+                <ScalarProperty Name="incident_id" ColumnName="incident_id" />
+                <ScalarProperty Name="tango" ColumnName="tango" />
+                <ScalarProperty Name="cell" ColumnName="cell" />
+                <ScalarProperty Name="inmate_id" ColumnName="inmate_id" />
+                <ScalarProperty Name="inmate_sys_id" ColumnName="inmate_sys_id" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="m_name" ColumnName="m_name" />
+                <ScalarProperty Name="l_name" ColumnName="l_name" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="attended_program" ColumnName="attended_program" />
+                <ScalarProperty Name="attended_program_name" ColumnName="attended_program_name" />
+                <ScalarProperty Name="incident_date" ColumnName="incident_date" />
+                <ScalarProperty Name="trib_sched_date" ColumnName="trib_sched_date" />
+                <ScalarProperty Name="incident_time" ColumnName="incident_time" />
+                <ScalarProperty Name="search_type" ColumnName="search_type" />
+                <ScalarProperty Name="violation_id" ColumnName="violation_id" />
+                <ScalarProperty Name="contraband_type_id" ColumnName="contraband_type_id" />
+                <ScalarProperty Name="contraband_item" ColumnName="contraband_item" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+                <ScalarProperty Name="t_case_status" ColumnName="t_case_status" />
+                <ScalarProperty Name="t_data" ColumnName="t_data" />
+                <ScalarProperty Name="officer_involved" ColumnName="officer_involved" />
+                <ScalarProperty Name="officer_conducting" ColumnName="officer_conducting" />
+                <ScalarProperty Name="officer_reporting" ColumnName="officer_reporting" />
+                <ScalarProperty Name="officer_supervisor_id" ColumnName="officer_supervisor_id" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="team_id" ColumnName="team_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="rd_to_pa" ColumnName="rd_to_pa" />
+                <ScalarProperty Name="rd_to_im" ColumnName="rd_to_im" />
+                <ScalarProperty Name="rd_to_tft" ColumnName="rd_to_tft" />
+                <ScalarProperty Name="rd_to_pua" ColumnName="rd_to_pua" />
+                <ScalarProperty Name="rd_to_dtp" ColumnName="rd_to_dtp" />
+                <ScalarProperty Name="rd_to_agod" ColumnName="rd_to_agod" />
+                <ScalarProperty Name="rd_to_db" ColumnName="rd_to_db" />
+                <ScalarProperty Name="rd_to_rco" ColumnName="rd_to_rco" />
+                <ScalarProperty Name="rd_to_thwds" ColumnName="rd_to_thwds" />
+                <ScalarProperty Name="rd_to_fa" ColumnName="rd_to_fa" />
+                <ScalarProperty Name="rd_to_ep" ColumnName="rd_to_ep" />
+                <ScalarProperty Name="rd_to_ea" ColumnName="rd_to_ea" />
+                <ScalarProperty Name="rd_to_sat" ColumnName="rd_to_sat" />
+                <ScalarProperty Name="rd_to_oth" ColumnName="rd_to_oth" />
+                <ScalarProperty Name="violation_oth" ColumnName="violation_oth" />
+                <ScalarProperty Name="rd_con_cel" ColumnName="rd_con_cel" />
+                <ScalarProperty Name="rd_con_cel_qty" ColumnName="rd_con_cel_qty" />
+                <ScalarProperty Name="rd_con_cel_uid" ColumnName="rd_con_cel_uid" />
+                <ScalarProperty Name="rd_con_csh" ColumnName="rd_con_csh" />
+                <ScalarProperty Name="rd_con_csh_qty" ColumnName="rd_con_csh_qty" />
+                <ScalarProperty Name="rd_con_csh_uid" ColumnName="rd_con_csh_uid" />
+                <ScalarProperty Name="rd_con_sim" ColumnName="rd_con_sim" />
+                <ScalarProperty Name="rd_con_sim_qty" ColumnName="rd_con_sim_qty" />
+                <ScalarProperty Name="rd_con_sim_uid" ColumnName="rd_con_sim_uid" />
+                <ScalarProperty Name="rd_con_wn" ColumnName="rd_con_wn" />
+                <ScalarProperty Name="rd_con_wn_qty" ColumnName="rd_con_wn_qty" />
+                <ScalarProperty Name="rd_con_wn_uid" ColumnName="rd_con_wn_uid" />
+                <ScalarProperty Name="rd_con_bor" ColumnName="rd_con_bor" />
+                <ScalarProperty Name="rd_con_bor_qty" ColumnName="rd_con_bor_qty" />
+                <ScalarProperty Name="rd_con_bor_uid" ColumnName="rd_con_bor_uid" />
+                <ScalarProperty Name="rd_con_drg" ColumnName="rd_con_drg" />
+                <ScalarProperty Name="rd_con_drg_qty" ColumnName="rd_con_drg_qty" />
+                <ScalarProperty Name="rd_con_drg_uid" ColumnName="rd_con_drg_uid" />
+                <ScalarProperty Name="rd_con_can" ColumnName="rd_con_can" />
+                <ScalarProperty Name="rd_con_can_qty" ColumnName="rd_con_can_qty" />
+                <ScalarProperty Name="rd_con_can_uid" ColumnName="rd_con_can_uid" />
+                <ScalarProperty Name="rd_con_oth" ColumnName="rd_con_oth" />
+                <ScalarProperty Name="rd_con_oth_qty" ColumnName="rd_con_oth_qty" />
+                <ScalarProperty Name="rd_con_oth_uid" ColumnName="rd_con_oth_uid" />
+                <ScalarProperty Name="rd_con_prn" ColumnName="rd_con_prn" />
+                <ScalarProperty Name="rd_con_prn_qty" ColumnName="rd_con_prn_qty" />
+                <ScalarProperty Name="rd_con_prn_uid" ColumnName="rd_con_prn_uid" />
+                <ScalarProperty Name="offence_nature_oth" ColumnName="offence_nature_oth" />
+                <ScalarProperty Name="contraband_oth" ColumnName="contraband_oth" />
+                <ScalarProperty Name="reason_oth" ColumnName="reason_oth" />
+                <ScalarProperty Name="weapon_oth" ColumnName="weapon_oth" />
+                <ScalarProperty Name="weapon_id" ColumnName="weapon_id" />
+                <ScalarProperty Name="reason_id" ColumnName="reason_id" />
+                <ScalarProperty Name="contraband_id" ColumnName="contraband_id" />
+                <ScalarProperty Name="contraband_unit" ColumnName="contraband_unit" />
+                <ScalarProperty Name="conceal_method" ColumnName="conceal_method" />
+                <ScalarProperty Name="offence_nature_id" ColumnName="offence_nature_id" />
+                <ScalarProperty Name="misc_occurrence" ColumnName="misc_occurrence" />
+                <ScalarProperty Name="rad_wt_inmate" ColumnName="rad_wt_inmate" />
+                <ScalarProperty Name="rad_wt_officer" ColumnName="rad_wt_officer" />
+                <ScalarProperty Name="rad_wt_civilian" ColumnName="rad_wt_civilian" />
+                <ScalarProperty Name="rad_wt_none" ColumnName="rad_wt_none" />
+                <ScalarProperty Name="wt_inmate_nme" ColumnName="wt_inmate_nme" />
+                <ScalarProperty Name="wt_officer_nme" ColumnName="wt_officer_nme" />
+                <ScalarProperty Name="wt_civilian_nme" ColumnName="wt_civilian_nme" />
+                <ScalarProperty Name="wt_officer_loc_id" ColumnName="wt_officer_loc_id" />
+                <ScalarProperty Name="wt_civilian_loc_id" ColumnName="wt_civilian_loc_id" />
+                <ScalarProperty Name="wt_inmate_loc_id" ColumnName="wt_inmate_loc_id" />
+                <ScalarProperty Name="wt_inmate_cell_id" ColumnName="wt_inmate_cell_id" />
+                <ScalarProperty Name="wt_inmate_oth" ColumnName="wt_inmate_oth" />
+                <ScalarProperty Name="wt_civilian_oth" ColumnName="wt_civilian_oth" />
+                <ScalarProperty Name="wt_officer_oth" ColumnName="wt_officer_oth" />
+                <ScalarProperty Name="action_taken" ColumnName="action_taken" />
+                <ScalarProperty Name="at_yn_trans_inmate" ColumnName="at_yn_trans_inmate" />
+                <ScalarProperty Name="at_location_id" ColumnName="at_location_id" />
+                <ScalarProperty Name="at_cell_id" ColumnName="at_cell_id" />
+                <ScalarProperty Name="at_yn_form_cmp" ColumnName="at_yn_form_cmp" />
+                <ScalarProperty Name="at_yn_chgtrib" ColumnName="at_yn_chgtrib" />
+                <ScalarProperty Name="at_yn_exforce_cmp" ColumnName="at_yn_exforce_cmp" />
+                <ScalarProperty Name="at_other" ColumnName="at_other" />
+                <ScalarProperty Name="civilian" ColumnName="civilian" />
+                <ScalarProperty Name="form_type_id" ColumnName="form_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="incident_involved">
+            <EntityTypeMapping TypeName="dbkolbeModel.incident_involved">
+              <MappingFragment StoreEntitySet="incident_involved">
+                <ScalarProperty Name="incident_involved_id" ColumnName="incident_involved_id" />
+                <ScalarProperty Name="incident_id" ColumnName="incident_id" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="l_name" ColumnName="l_name" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="cell" ColumnName="cell" />
+                <ScalarProperty Name="classification" ColumnName="classification" />
+                <ScalarProperty Name="inmate_sys_id" ColumnName="inmate_sys_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inmates">
+            <EntityTypeMapping TypeName="dbkolbeModel.inmate">
+              <MappingFragment StoreEntitySet="inmate">
+                <ScalarProperty Name="inmate_id" ColumnName="inmate_id" />
+                <ScalarProperty Name="inmate_sys_id" ColumnName="inmate_sys_id" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="m_name" ColumnName="m_name" />
+                <ScalarProperty Name="l_name" ColumnName="l_name" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="admiss_dte" ColumnName="admiss_dte" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="o_age" ColumnName="o_age" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="ethnicity_id" ColumnName="ethnicity_id" />
+                <ScalarProperty Name="attended_program" ColumnName="attended_program" />
+                <ScalarProperty Name="location_parent_id" ColumnName="location_parent_id" />
+                <ScalarProperty Name="location_id" ColumnName="location_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="inmate_status_id" ColumnName="inmate_status_id" />
+                <ScalarProperty Name="custody_status_id" ColumnName="custody_status_id" />
+                <ScalarProperty Name="i_photo" ColumnName="i_photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inmate_program">
+            <EntityTypeMapping TypeName="dbkolbeModel.inmate_program">
+              <MappingFragment StoreEntitySet="inmate_program">
+                <ScalarProperty Name="inmate_program_id" ColumnName="inmate_program_id" />
+                <ScalarProperty Name="inmate_id" ColumnName="inmate_id" />
+                <ScalarProperty Name="program_id" ColumnName="program_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="intervals">
+            <EntityTypeMapping TypeName="dbkolbeModel.interval">
+              <MappingFragment StoreEntitySet="interval">
+                <ScalarProperty Name="interval_id" ColumnName="interval_id" />
+                <ScalarProperty Name="interval_name" ColumnName="interval_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locations">
+            <EntityTypeMapping TypeName="dbkolbeModel.location">
+              <MappingFragment StoreEntitySet="location">
+                <ScalarProperty Name="location_id" ColumnName="location_id" />
+                <ScalarProperty Name="location_parent_id" ColumnName="location_parent_id" />
+                <ScalarProperty Name="tango" ColumnName="tango" />
+                <ScalarProperty Name="location_name" ColumnName="location_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="location_parent">
+            <EntityTypeMapping TypeName="dbkolbeModel.location_parent">
+              <MappingFragment StoreEntitySet="location_parent">
+                <ScalarProperty Name="location_parent_id" ColumnName="location_parent_id" />
+                <ScalarProperty Name="tango" ColumnName="tango" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="move_type_det_id" ColumnName="move_type_det_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="moves">
+            <EntityTypeMapping TypeName="dbkolbeModel.move">
+              <MappingFragment StoreEntitySet="move">
+                <ScalarProperty Name="move_id" ColumnName="move_id" />
+                <ScalarProperty Name="person_id" ColumnName="person_id" />
+                <ScalarProperty Name="m_date" ColumnName="m_date" />
+                <ScalarProperty Name="s_location_id" ColumnName="s_location_id" />
+                <ScalarProperty Name="s_time" ColumnName="s_time" />
+                <ScalarProperty Name="e_location_id" ColumnName="e_location_id" />
+                <ScalarProperty Name="e_time" ColumnName="e_time" />
+                <ScalarProperty Name="move_type_id" ColumnName="move_type_id" />
+                <ScalarProperty Name="m_status_id" ColumnName="m_status_id" />
+                <ScalarProperty Name="m_comments" ColumnName="m_comments" />
+                <ScalarProperty Name="ext_no" ColumnName="ext_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="move_type">
+            <EntityTypeMapping TypeName="dbkolbeModel.move_type">
+              <MappingFragment StoreEntitySet="move_type">
+                <ScalarProperty Name="move_type_id" ColumnName="move_type_id" />
+                <ScalarProperty Name="m_code" ColumnName="m_code" />
+                <ScalarProperty Name="m_description" ColumnName="m_description" />
+                <ScalarProperty Name="dest_type_id" ColumnName="dest_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="move_type_det">
+            <EntityTypeMapping TypeName="dbkolbeModel.move_type_det">
+              <MappingFragment StoreEntitySet="move_type_det">
+                <ScalarProperty Name="move_type_det_id" ColumnName="move_type_det_id" />
+                <ScalarProperty Name="move_type_id" ColumnName="move_type_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="short_desc" ColumnName="short_desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="offence_nature">
+            <EntityTypeMapping TypeName="dbkolbeModel.offence_nature">
+              <MappingFragment StoreEntitySet="offence_nature">
+                <ScalarProperty Name="offence_nature_id" ColumnName="offence_nature_id" />
+                <ScalarProperty Name="offence_nature_desc" ColumnName="offence_nature_desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="officers">
+            <EntityTypeMapping TypeName="dbkolbeModel.officer">
+              <MappingFragment StoreEntitySet="officer">
+                <ScalarProperty Name="officer_id" ColumnName="officer_id" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="m_name" ColumnName="m_name" />
+                <ScalarProperty Name="l_name" ColumnName="l_name" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="p_location_id" ColumnName="p_location_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="p_location">
+            <EntityTypeMapping TypeName="dbkolbeModel.p_location">
+              <MappingFragment StoreEntitySet="p_location">
+                <ScalarProperty Name="p_location_id" ColumnName="p_location_id" />
+                <ScalarProperty Name="p_name" ColumnName="p_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="params">
+            <EntityTypeMapping TypeName="dbkolbeModel.param">
+              <MappingFragment StoreEntitySet="param">
+                <ScalarProperty Name="param_id" ColumnName="param_id" />
+                <ScalarProperty Name="par_code" ColumnName="par_code" />
+                <ScalarProperty Name="par_num" ColumnName="par_num" />
+                <ScalarProperty Name="par_desc" ColumnName="par_desc" />
+                <ScalarProperty Name="par_charfield" ColumnName="par_charfield" />
+                <ScalarProperty Name="recordstamp" ColumnName="recordstamp" />
+                <ScalarProperty Name="par_numfield" ColumnName="par_numfield" />
+                <ScalarProperty Name="par_table_name" ColumnName="par_table_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="programs">
+            <EntityTypeMapping TypeName="dbkolbeModel.program">
+              <MappingFragment StoreEntitySet="program">
+                <ScalarProperty Name="program_id" ColumnName="program_id" />
+                <ScalarProperty Name="program_class" ColumnName="program_class" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reasons">
+            <EntityTypeMapping TypeName="dbkolbeModel.reason">
+              <MappingFragment StoreEntitySet="reason">
+                <ScalarProperty Name="reason_id" ColumnName="reason_id" />
+                <ScalarProperty Name="reason_desc" ColumnName="reason_desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="search_type">
+            <EntityTypeMapping TypeName="dbkolbeModel.search_type">
+              <MappingFragment StoreEntitySet="search_type">
+                <ScalarProperty Name="search_type_id" ColumnName="search_type_id" />
+                <ScalarProperty Name="st_name" ColumnName="st_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_verdict">
+            <EntityTypeMapping TypeName="dbkolbeModel.t_verdict">
+              <MappingFragment StoreEntitySet="t_verdict">
+                <ScalarProperty Name="t_verdict_id" ColumnName="t_verdict_id" />
+                <ScalarProperty Name="t_verdict1" ColumnName="t_verdict" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teams">
+            <EntityTypeMapping TypeName="dbkolbeModel.team">
+              <MappingFragment StoreEntitySet="team">
+                <ScalarProperty Name="team_id" ColumnName="team_id" />
+                <ScalarProperty Name="team_name" ColumnName="team_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tribunals">
+            <EntityTypeMapping TypeName="dbkolbeModel.tribunal">
+              <MappingFragment StoreEntitySet="tribunal">
+                <ScalarProperty Name="tribunal_id" ColumnName="tribunal_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="incident_id" ColumnName="incident_id" />
+                <ScalarProperty Name="inmate_id" ColumnName="inmate_id" />
+                <ScalarProperty Name="t_date" ColumnName="t_date" />
+                <ScalarProperty Name="t_time" ColumnName="t_time" />
+                <ScalarProperty Name="v_act" ColumnName="v_act" />
+                <ScalarProperty Name="t_plea" ColumnName="t_plea" />
+                <ScalarProperty Name="t_verdict" ColumnName="t_verdict" />
+                <ScalarProperty Name="charge" ColumnName="charge" />
+                <ScalarProperty Name="sentence" ColumnName="sentence" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="incident_date" ColumnName="incident_date" />
+                <ScalarProperty Name="t_officer" ColumnName="t_officer" />
+                <ScalarProperty Name="i_officer" ColumnName="i_officer" />
+                <ScalarProperty Name="v_location" ColumnName="v_location" />
+                <ScalarProperty Name="contraband_item" ColumnName="contraband_item" />
+                <ScalarProperty Name="t_case_status" ColumnName="t_case_status" />
+                <ScalarProperty Name="inmate_name" ColumnName="inmate_name" />
+                <ScalarProperty Name="v_section" ColumnName="v_section" />
+                <ScalarProperty Name="chk_st_caution" ColumnName="chk_st_caution" />
+                <ScalarProperty Name="chk_st_suspend" ColumnName="chk_st_suspend" />
+                <ScalarProperty Name="chk_st_full" ColumnName="chk_st_full" />
+                <ScalarProperty Name="chk_st_loss_fd" ColumnName="chk_st_loss_fd" />
+                <ScalarProperty Name="chk_st_build" ColumnName="chk_st_build" />
+                <ScalarProperty Name="chk_st_lcv" ColumnName="chk_st_lcv" />
+                <ScalarProperty Name="chk_st_personal" ColumnName="chk_st_personal" />
+                <ScalarProperty Name="chk_st_forfeitwg" ColumnName="chk_st_forfeitwg" />
+                <ScalarProperty Name="chk_st_losswg" ColumnName="chk_st_losswg" />
+                <ScalarProperty Name="s_start_date" ColumnName="s_start_date" />
+                <ScalarProperty Name="sb_start_date" ColumnName="sb_start_date" />
+                <ScalarProperty Name="ss_start_date" ColumnName="ss_start_date" />
+                <ScalarProperty Name="s_lfd_start_date" ColumnName="s_lfd_start_date" />
+                <ScalarProperty Name="s_lcv_start_date" ColumnName="s_lcv_start_date" />
+                <ScalarProperty Name="s_pp_start_date" ColumnName="s_pp_start_date" />
+                <ScalarProperty Name="s_fw_start_date" ColumnName="s_fw_start_date" />
+                <ScalarProperty Name="s_lw_start_date" ColumnName="s_lw_start_date" />
+                <ScalarProperty Name="s_end_date" ColumnName="s_end_date" />
+                <ScalarProperty Name="sb_end_date" ColumnName="sb_end_date" />
+                <ScalarProperty Name="ss_end_date" ColumnName="ss_end_date" />
+                <ScalarProperty Name="s_lfd_end_date" ColumnName="s_lfd_end_date" />
+                <ScalarProperty Name="s_lcv_end_date" ColumnName="s_lcv_end_date" />
+                <ScalarProperty Name="s_pp_end_date" ColumnName="s_pp_end_date" />
+                <ScalarProperty Name="s_fw_end_date" ColumnName="s_fw_end_date" />
+                <ScalarProperty Name="s_lw_end_date" ColumnName="s_lw_end_date" />
+                <ScalarProperty Name="s_duration" ColumnName="s_duration" />
+                <ScalarProperty Name="sb_duration" ColumnName="sb_duration" />
+                <ScalarProperty Name="ss_duration" ColumnName="ss_duration" />
+                <ScalarProperty Name="s_lfd_duration" ColumnName="s_lfd_duration" />
+                <ScalarProperty Name="s_lcv_duration" ColumnName="s_lcv_duration" />
+                <ScalarProperty Name="s_pp_duration" ColumnName="s_pp_duration" />
+                <ScalarProperty Name="s_fw_duration" ColumnName="s_fw_duration" />
+                <ScalarProperty Name="s_lw_duration" ColumnName="s_lw_duration" />
+                <ScalarProperty Name="s_location_id" ColumnName="s_location_id" />
+                <ScalarProperty Name="sb_location_id" ColumnName="sb_location_id" />
+                <ScalarProperty Name="s_cell_id" ColumnName="s_cell_id" />
+                <ScalarProperty Name="sb_cell_id" ColumnName="sb_cell_id" />
+                <ScalarProperty Name="s_pp_comments" ColumnName="s_pp_comments" />
+                <ScalarProperty Name="chk_pr_council" ColumnName="chk_pr_council" />
+                <ScalarProperty Name="chk_pr_medic" ColumnName="chk_pr_medic" />
+                <ScalarProperty Name="chk_pr_mediate" ColumnName="chk_pr_mediate" />
+                <ScalarProperty Name="chk_pr_oth" ColumnName="chk_pr_oth" />
+                <ScalarProperty Name="pr_council_com" ColumnName="pr_council_com" />
+                <ScalarProperty Name="pr_medic_com" ColumnName="pr_medic_com" />
+                <ScalarProperty Name="pr_mediate_com" ColumnName="pr_mediate_com" />
+                <ScalarProperty Name="pr_oth_com" ColumnName="pr_oth_com" />
+                <ScalarProperty Name="v_act_code_id" ColumnName="v_act_code_id" />
+                <ScalarProperty Name="t_panel_name" ColumnName="t_panel_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="u_locale">
+            <EntityTypeMapping TypeName="dbkolbeModel.u_locale">
+              <MappingFragment StoreEntitySet="u_locale">
+                <ScalarProperty Name="u_local_id" ColumnName="u_local_id" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="loc_parent_id" ColumnName="loc_parent_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="u_module">
+            <EntityTypeMapping TypeName="dbkolbeModel.u_module">
+              <MappingFragment StoreEntitySet="u_module">
+                <ScalarProperty Name="u_module_id" ColumnName="u_module_id" />
+                <ScalarProperty Name="u_module_name" ColumnName="u_module_name" />
+                <ScalarProperty Name="u_mod_desc" ColumnName="u_mod_desc" />
+                <ScalarProperty Name="u_mod_group" ColumnName="u_mod_group" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="u_permissions">
+            <EntityTypeMapping TypeName="dbkolbeModel.u_permissions">
+              <MappingFragment StoreEntitySet="u_permissions">
+                <ScalarProperty Name="u_permissions_id" ColumnName="u_permissions_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="u_module_id" ColumnName="u_module_id" />
+                <ScalarProperty Name="u_module_all" ColumnName="u_module_all" />
+                <ScalarProperty Name="u_r" ColumnName="u_r" />
+                <ScalarProperty Name="u_rw" ColumnName="u_rw" />
+                <ScalarProperty Name="u_rwa" ColumnName="u_rwa" />
+                <ScalarProperty Name="u_rd" ColumnName="u_rd" />
+                <ScalarProperty Name="u_rwd" ColumnName="u_rwd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="units">
+            <EntityTypeMapping TypeName="dbkolbeModel.unit">
+              <MappingFragment StoreEntitySet="unit">
+                <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+                <ScalarProperty Name="unit_desc" ColumnName="unit_desc" />
+                <ScalarProperty Name="unit_abbr" ColumnName="unit_abbr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="dbkolbeModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="u_name" ColumnName="u_name" />
+                <ScalarProperty Name="u_password" ColumnName="u_password" />
+                <ScalarProperty Name="u_group" ColumnName="u_group" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="l_name" ColumnName="l_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_act_code">
+            <EntityTypeMapping TypeName="dbkolbeModel.v_act_code">
+              <MappingFragment StoreEntitySet="v_act_code">
+                <ScalarProperty Name="v_act_code_id" ColumnName="v_act_code_id" />
+                <ScalarProperty Name="violation_act_id" ColumnName="violation_act_id" />
+                <ScalarProperty Name="reporting_code" ColumnName="reporting_code" />
+                <ScalarProperty Name="r_short_desc" ColumnName="r_short_desc" />
+                <ScalarProperty Name="r_code_desc" ColumnName="r_code_desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="violations">
+            <EntityTypeMapping TypeName="dbkolbeModel.violation">
+              <MappingFragment StoreEntitySet="violation">
+                <ScalarProperty Name="violation_id" ColumnName="violation_id" />
+                <ScalarProperty Name="offence_name" ColumnName="offence_name" />
+                <ScalarProperty Name="short_desc" ColumnName="short_desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="violation_act">
+            <EntityTypeMapping TypeName="dbkolbeModel.violation_act">
+              <MappingFragment StoreEntitySet="violation_act">
+                <ScalarProperty Name="violation_act_id" ColumnName="violation_act_id" />
+                <ScalarProperty Name="violation_id" ColumnName="violation_id" />
+                <ScalarProperty Name="v_section" ColumnName="v_section" />
+                <ScalarProperty Name="v_section_desc" ColumnName="v_section_desc" />
+                <ScalarProperty Name="v_subsection" ColumnName="v_subsection" />
+                <ScalarProperty Name="v_subsection_desc" ColumnName="v_subsection_desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="weapons">
+            <EntityTypeMapping TypeName="dbkolbeModel.weapon">
+              <MappingFragment StoreEntitySet="weapon">
+                <ScalarProperty Name="weapon_id" ColumnName="weapon_id" />
+                <ScalarProperty Name="weapon_desc" ColumnName="weapon_desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="aspnetuserroles" TypeName="dbkolbeModel.aspnetuserroles" StoreEntitySet="aspnetuserroles">
+            <EndProperty Name="aspnetusers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="aspnetroles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

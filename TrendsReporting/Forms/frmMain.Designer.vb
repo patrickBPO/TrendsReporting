@@ -44,6 +44,8 @@ Partial Class frmMain
         Me.INCIDENTSBYSTATUSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ITSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.IncidentTrackingSystemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AdminToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InmateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -60,7 +62,7 @@ Partial Class frmMain
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.AntiqueWhite
         Me.MenuStrip1.BackgroundImage = Global.TrendsReporting.My.Resources.Resources.gridGlass
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.TrendReportsToolStripMenuItem, Me.ITSToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.TrendReportsToolStripMenuItem, Me.ITSToolStripMenuItem, Me.AdminToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(362, 29)
@@ -203,6 +205,20 @@ Partial Class frmMain
         Me.IncidentTrackingSystemToolStripMenuItem.Text = "Incident Tracking System"
         Me.IncidentTrackingSystemToolStripMenuItem.ToolTipText = "ITS"
         '
+        'AdminToolStripMenuItem
+        '
+        Me.AdminToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InmateToolStripMenuItem})
+        Me.AdminToolStripMenuItem.Font = New System.Drawing.Font("Franklin Gothic Demi", 12.0!)
+        Me.AdminToolStripMenuItem.Name = "AdminToolStripMenuItem"
+        Me.AdminToolStripMenuItem.Size = New System.Drawing.Size(67, 25)
+        Me.AdminToolStripMenuItem.Text = "&Admin"
+        '
+        'InmateToolStripMenuItem
+        '
+        Me.InmateToolStripMenuItem.Name = "InmateToolStripMenuItem"
+        Me.InmateToolStripMenuItem.Size = New System.Drawing.Size(152, 26)
+        Me.InmateToolStripMenuItem.Text = "Inmate"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -216,7 +232,6 @@ Partial Class frmMain
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmMain"
-        Me.Opacity = 0.75R
         Me.Text = "Trends Interface"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
@@ -246,4 +261,6 @@ Partial Class frmMain
     Friend WithEvents INCIDENTSBYETHNICITYToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents INCIDENTSBYSTATUSToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents AdminToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents InmateToolStripMenuItem As ToolStripMenuItem
 End Class

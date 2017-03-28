@@ -74,6 +74,67 @@ Namespace My
                 Return CType(Me("dbkolbeConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=web;user id=kolbe;port=3308;database=dbkolbe;password=K0lb3@xs4db;persists"& _ 
+            "ecurityinfo=True")>  _
+        Public ReadOnly Property dbkolbeConnectionString1() As String
+            Get
+                Return CType(Me("dbkolbeConnectionString1"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=PROGRAMMER;user id=kolbe;password=K0lb3@xs4db;port=3308;database=dbkolbe")>  _
+        Public ReadOnly Property dbkolbeConnectionString2() As String
+            Get
+                Return CType(Me("dbkolbeConnectionString2"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=programmer;user id=kolbe;password=K0lb3@xs4db;port=3308;database=dbkolbe")>  _
+        Public ReadOnly Property dbkolbeConnectionString3() As String
+            Get
+                Return CType(Me("dbkolbeConnectionString3"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=web;user id=kolbe;password=K0lb3@xs4db;port=3308;database=dbkolbeT")>  _
+        Public ReadOnly Property dbkolbeTConnectionString() As String
+            Get
+                Return CType(Me("dbkolbeTConnectionString"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=web;user id=kolbe;port=3308;database=dbkolbe")>  _
+        Public ReadOnly Property dbkolbeTConnectionString1() As String
+            Get
+                Return CType(Me("dbkolbeTConnectionString1"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=web;user id=kolbe;password=K0lb3@xs4db;port=3308;database=dbkolbe")>  _
+        Public ReadOnly Property dbkolbeConnStr() As String
+            Get
+                Return CType(Me("dbkolbeConnStr"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

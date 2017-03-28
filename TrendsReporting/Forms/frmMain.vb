@@ -67,6 +67,12 @@ Public Class frmMain
         Else
             TrendReportsToolStripMenuItem.Visible = True
         End If
+
+        If Not verifLog.IsAdmin(glbUname, glbPwd) Then
+            AdminToolStripMenuItem.Visible = False
+        Else
+            AdminToolStripMenuItem.Visible = True
+        End If
     End Sub
 
     Private Sub CONTRABANDSEIZURESYTDToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CONTRABANDSEIZURESYTDToolStripMenuItem.Click
@@ -95,8 +101,20 @@ Public Class frmMain
 
     Private Sub frmMain_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         Dim fmLgin As New frmLogin
-        glbConn.Close()
-        fmLgin.Show()
+        'glbConn.Close()
+        frmLogin.Show()
+    End Sub
+
+    Private Sub InmateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InmateToolStripMenuItem.Click
+        frmInmateEntry.Show()
+    End Sub
+
+    Private Sub frmMain_LostFocus(sender As Object, e As EventArgs) Handles Me.LostFocus
+        Opacity = 0.1 + 60 / 100
+    End Sub
+
+    Private Sub frmMain_GotFocus(sender As Object, e As EventArgs) Handles Me.GotFocus
+        Opacity = 0.1 + 100 / 100
 
     End Sub
 

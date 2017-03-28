@@ -83,4 +83,20 @@ Public Class frmLogin
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         Application.Exit()
     End Sub
+
+
+    'Private Sub frmLogin_LostFocus(sender As Object, e As EventArgs) Handles Me.LostFocus
+    '    'Opacity = 0.1 + 60 / 100
+    '    Call ClearFields()
+    'End Sub
+
+    'Private Sub frmLogin_GotFocus(sender As Object, e As EventArgs) Handles Me.GotFocus
+    '    Opacity = 0.1 + 100 / 100
+
+    'End Sub
+
+    'Private Sub frmLogin_Click(sender As Object, e As EventArgs) Handles Me.Click
+
+    '    Opacity = 0.1 + 100 / 100
+    'End Sub
 End Class

@@ -143,7 +143,6 @@ Partial Class frmLogin
         Me.txtPasswd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(8224)
         Me.txtPasswd.Size = New System.Drawing.Size(137, 23)
         Me.txtPasswd.TabIndex = 13
-        Me.txtPasswd.Text = "psswd"
         '
         'txtUname
         '
@@ -153,7 +152,6 @@ Partial Class frmLogin
         Me.txtUname.Name = "txtUname"
         Me.txtUname.Size = New System.Drawing.Size(137, 23)
         Me.txtUname.TabIndex = 12
-        Me.txtUname.Text = "UserName"
         '
         'Panel2
         '
@@ -167,10 +165,12 @@ Partial Class frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.Tan
+        Me.BackColor = System.Drawing.Color.White
+        Me.BackgroundImage = Global.TrendsReporting.My.Resources.Resources.gridGlass
         Me.ClientSize = New System.Drawing.Size(304, 201)
         Me.Controls.Add(Me.Panel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "frmLogin"
         Me.Text = "System Login"
         Me.Panel1.ResumeLayout(False)

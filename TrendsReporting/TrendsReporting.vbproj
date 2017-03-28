@@ -76,14 +76,22 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Windows.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Google.ProtocolBuffers, Version=2.4.1.555, Culture=neutral, PublicKeyToken=55f7125234beb589" />
     <Reference Include="MySql.Data, Version=7.0.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
@@ -104,11 +112,32 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dbkolbeDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbkolbeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmInmateEntry.Designer.vb">
+      <DependentUpon>frmInmateEntry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmInmateEntry.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmLogin.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inmate.Designer.vb">
+      <DependentUpon>Inmate.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Inmate.vb">
+      <DependentUpon>Inmate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Modules\CRPath.vb" />
     <Compile Include="DataSet1.Designer.vb">
@@ -155,6 +184,9 @@
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInmateEntry.resx">
+      <DependentUpon>frmInmateEntry.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +211,27 @@
     </None>
     <None Include="DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="dbkolbeDataSet.xsc">
+      <DependentUpon>dbkolbeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dbkolbeDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbkolbeDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dbkolbeDataSet.xss">
+      <DependentUpon>dbkolbeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dbkolbeTDataSet.xsc">
+      <DependentUpon>dbkolbeTDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dbkolbeTDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dbkolbeTDataSet.xss">
+      <DependentUpon>dbkolbeTDataSet.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -213,15 +266,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-    <COMReference Include="Microsoft.Office.Core">
-      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>5</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
     <COMReference Include="Microsoft.Office.Interop.Access.Dao">
       <Guid>{4AC9E1DA-5BAD-4AC7-86E3-24F4CDCECA28}</Guid>
       <VersionMajor>12</VersionMajor>
@@ -242,14 +286,21 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\NoPicAvailable.png" />
     <None Include="Icons\Cross.png" />
     <None Include="Icons\christian-cross-symbol %281%29.png" />
     <Content Include="Icons\Dog.ico" />
+    <None Include="packages.config" />
     <None Include="Resources\ButtonGrn3D.png" />
     <None Include="Resources\ButtonChr3D.png" />
     <None Include="Resources\btnLiUp.png" />
     <None Include="Resources\btnExUp.png" />
     <None Include="Resources\btnRnUp.png" />
+    <Content Include="Inmate.tt">
+      <DependentUpon>Inmate.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Inmate.vb</LastGenOutput>
+    </Content>
     <Content Include="Resources\CoatOfArms.png" />
     <None Include="Resources\Doberman30pct.jpg" />
     <None Include="Resources\item.png" />
@@ -263,7 +314,15 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Inmate.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Inmate.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
